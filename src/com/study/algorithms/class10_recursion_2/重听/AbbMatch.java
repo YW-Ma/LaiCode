@@ -15,6 +15,39 @@ public class AbbMatch {
     // 每次pattern先走，然后看如果是letter，就走1个input，并检查是否相同
     // 如果是num，就记录完这个num，停在num后方的letter。input走num个位置，走到letter上检查是否相等。
     public boolean match(String input, String pattern) {
-        return false;
+        // 这是一节Recursion课，所以我只写recursion方法：
+        return helper(input, pattern, 0, 0);
     }
+
+    private boolean helper(String s, String t, int si, int ti) {
+        // source, target, compare ith element
+
+        // base case:
+        if (si == s.length() && ti == t.length()) {
+            return true;
+        }
+        if (si == s.length() || ti == t.length()) {
+            return false;
+        }
+
+        // recursion:
+        // case 1: if current char is not a digit
+        if (t.charAt(ti) < '0' || t.charAt(ti) > '9') {
+            if (t.charAt(ti) != s.charAt(si)) {
+                return false;
+            }
+            return helper(s, t, si + 1, ti + 1);
+        }
+        // case 2: is a digit
+        int count = 0;
+        //  while(t.charAt(ti) >= '0' && t.charAt(ti) <= '9') {   // 错了，注意定义域优先
+        while(ti < t.length() && t.charAt(ti) >= '0' && t.charAt(ti) <= '9') {
+            count = count * 10 + (t.charAt(ti) - '0');
+            ti++;
+        }
+        si += count;
+        return helper(s, t, si, ti);
+    }
+    // time:  O(length of input)
+    // space: O(length of input)
 }
