@@ -57,6 +57,11 @@ public class EditDistance {
         return Math.min(add, Math.min(replace, delete));
     }
 
+    // Time: O(3^(m+n))   最多有m+n层，每层最多3 branches
+    // Space: O(m+n)
+    // n = src.length()
+    // m = tar.length()
+
 
     // Solution 2: DP
     public int editDistance(String src, String tar) {
@@ -80,5 +85,10 @@ public class EditDistance {
         }
         // return the solution of original problem
         return dist[0][0];
+
+        // Time: O(n*m)
+        // Space: O(n*m)
+        // n = src.length()
+        // m = tar.length()
     }
 }
