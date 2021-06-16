@@ -71,11 +71,4 @@ public class StringCornerCases_Validator {
     // 最后返回的是seenNumber与否，如果没有见过数字就是false
     // 代码我就不写了，
 
-
-    // 另外，可以用正则表达式：看教案有内容。
-    // 注意regular expression中，
-    //  [] 代表匹配一次， （不包括0次）
-    //  []* 代表匹配0或多次，
-    //  []+代表1或多次，
-    //  []? 代表0或1次
 }
