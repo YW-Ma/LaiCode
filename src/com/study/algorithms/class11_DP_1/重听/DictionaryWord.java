@@ -24,8 +24,8 @@ public class DictionaryWord {
 
     // substring函数： endIndex exclusive
 
-    public boolean canBreak(String input, String[] dict) {
-        boolean[] Dict = new boolean[input.length() + 1];
-
-    }
+//    public boolean canBreak(String input, String[] dict) {
+//        boolean[] Dict = new boolean[input.length() + 1];
+//
+//    }
 }
