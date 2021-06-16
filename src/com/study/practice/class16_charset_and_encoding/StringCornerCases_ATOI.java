@@ -1,11 +1,7 @@
 package com.study.practice.class16_charset_and_encoding;
 
-public class StringCornerCases {
+public class StringCornerCases_ATOI {
     // String的corner case特别多，主要是因为内容多样
-
-    public static void main(String[] args) {
-
-    }
 
     // Exercise 1: atoi    (convert a string to an integer) (assume it's a valid integral number)
     // [1] corner case:
