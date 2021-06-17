@@ -46,7 +46,7 @@ public class DictionaryWord {
             boolean isDictWord = false;
             for (int j = 0; j < i; j++) {
                 boolean left = M[j];
-                boolean right = dict.contains(input.substring(j));
+                boolean right = dict.contains(input.substring(j, i));
                 if (left && right) {
                     isDictWord = true;
                 }
