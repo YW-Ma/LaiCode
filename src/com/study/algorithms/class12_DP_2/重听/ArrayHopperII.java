@@ -33,10 +33,13 @@ public class ArrayHopperII {
         for (int i = n - 2; i >= 0; i--) {
             int min = Integer.MAX_VALUE;
             for (int j = i + 1; j <= i + A[i]; j++) {
+                if (j >= n || M[j] == Integer.MAX_VALUE) { // 如果越界或者 j 的位置是跳不到结尾的。              【1】 超级重要的判断
+                    continue;
+                }
                 min = Math.min(min, 1 + M[j]);
             }
             M[i] = min;
         }
-        return A[0];
+        return M[0] == Integer.MAX_VALUE ? -1 : M[0];
     }
 }

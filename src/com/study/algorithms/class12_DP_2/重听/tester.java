@@ -7,5 +7,8 @@ public class tester {
 
         DictionaryWord dictionaryWord = new DictionaryWord();
         System.out.println(dictionaryWord.canBreak("robcatd", new String[]{"rob", "cat", "d"}));
+
+        ArrayHopperII arrayHopperII = new ArrayHopperII();
+        System.out.println(arrayHopperII.minJump(new int[]{5,6,0,0,0,10,0,0,0}));
     }
 }
