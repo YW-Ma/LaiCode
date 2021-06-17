@@ -49,7 +49,7 @@ public class DictionaryWord {
             boolean isDictWord = false;
             for (int j = 0; j < i; j++) {
                 boolean left = M[j];
-                boolean right = dict.contains(input.substring(j, i));
+                boolean right = dict.contains(input.substring(j, i)); // 【1】 注意切割的范围是 [j,i),  别漏了i，只写个substring(j)
                 if (left && right) {
                     isDictWord = true;
                 }
