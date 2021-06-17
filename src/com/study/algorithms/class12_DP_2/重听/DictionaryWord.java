@@ -1,5 +1,8 @@
 package com.study.algorithms.class12_DP_2.重听;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class DictionaryWord {
     // M[i] represents whether or not [the first i letters] can be a concatenation of dictionary words.
 
@@ -20,4 +23,44 @@ public class DictionaryWord {
     // M[4] = (1) || (2) || (3)
     // if one of these options is valid, then we can mark M[4] as true, since its a valid concatenation of dict words.
 
+    public boolean canBreak(String input, String[] dictArray) {
+        if (dictArray == null || input == null) {
+            return false;
+        }
+        Set<String> dict = buildSet(dictArray);
+        boolean[] M = new boolean[input.length() + 1];
+        // base rule:
+        M[0] = true;
+        // induction rule:
+        //                i [1, size]
+        //                cut before j-th element, [0, i)
+        // M[1] b        |b
+        // M[2] bo       |bo   b|o
+        // M[3] bob      |bob  b|ob   bo|b
+        // ...
+        // M[6] bobcat   ... bob|cat ...
+        //                    /  \
+        //                  M[3]  check in dict
+
+        for (int i = 1; i <= input.length(); i++) {
+            boolean isDictWord = false;
+            for (int j = 0; j < i; j++) {
+                boolean left = M[j];
+                boolean right = dict.contains(input.substring(j));
+                if (left && right) {
+                    isDictWord = true;
+                }
+            }
+            M[i] = isDictWord;
+        }
+        return M[input.length()];
+    }
+
+    private Set<String> buildSet(String[] dictArray) {
+        Set<String> dict = new HashSet<String>();
+        for (String arr : dictArray) {
+            dict.add(arr);
+        }
+        return dict;
+    }
 }
