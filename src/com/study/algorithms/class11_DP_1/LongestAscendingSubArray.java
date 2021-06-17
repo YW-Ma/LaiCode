@@ -29,4 +29,6 @@ public class LongestAscendingSubArray {
     }
     return globalMax;
   }
+
+  // 如果要给出确切的范围呢（start、end index）
 }

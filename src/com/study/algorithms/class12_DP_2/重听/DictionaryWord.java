@@ -42,6 +42,9 @@ public class DictionaryWord {
         //                    /  \
         //                  M[3]  check in dict
 
+        // Time: O(input.length ^ 3)
+        // Space: O(input.length)
+
         for (int i = 1; i <= input.length(); i++) {
             boolean isDictWord = false;
             for (int j = 0; j < i; j++) {

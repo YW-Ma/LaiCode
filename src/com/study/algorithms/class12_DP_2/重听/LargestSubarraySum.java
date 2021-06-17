@@ -29,5 +29,13 @@ public class LargestSubarraySum {
 
     // 另外的follow up：切单词题目的具体切法（即每一刀切在哪里），跳房子的题目则打印每一步是怎么做的。
     //
-
+    public int largestSum(int[] input) {
+        int sum = input[0];
+        int maxSum = input[0];
+        for (int i = 1; i < input.length; i++) {
+            sum = Math.max(sum + input[i], input[i]); // 择优选择继承与否
+            maxSum = Math.max(maxSum, sum);
+        }
+        return maxSum;
+    }
 }
