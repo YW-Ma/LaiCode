@@ -10,5 +10,8 @@ public class tester {
 
         ArrayHopperII arrayHopperII = new ArrayHopperII();
         System.out.println(arrayHopperII.minJump(new int[]{5,6,0,0,0,10,0,0,0}));
+
+        LargestSquareOfOnes largestSquareOfOnes = new LargestSquareOfOnes();
+        System.out.println(largestSquareOfOnes.largest(new int[][]{{1,1,1,1},{1,1,1,0},{1,1,1,1},{1,1,0,1}}));
     }
 }
