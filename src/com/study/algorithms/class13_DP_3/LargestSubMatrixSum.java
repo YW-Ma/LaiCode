@@ -13,7 +13,7 @@ public class LargestSubMatrixSum {
     for (int i = 0; i < N; i++) {
       int[] cur = new int[M];
       for (int j = i; j < N; j++) {
-        // for each row i, we add the rows one by one for row j,
+        // for each row i, we add the rows one by one for col j,
         // to make sure each time we only introduce O(n) time.
         add(cur, matrix[j]);
         // for each possible pair of rows i,j,
