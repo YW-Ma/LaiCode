@@ -25,7 +25,7 @@ public class LinkedStack {
             if (current == null)
                 throw new java.util.NoSuchElementException();
             Object value = current;
-            current = current.getNext();
+            //current = current.getNext();
             return value;
         }
     }
