@@ -24,8 +24,39 @@ public class MaxPathSumLeafToLeaf {
 
 */
 
+  // Assumption:
+  // 1. class TreeNode {int key; TreeNode left; TreeNode right}
+  // 2. input is a root node;    output is the int sum
+  // 3. if we cannot find the leaf to leaf path, return [Integer.MIN_VALUE] --> or throw an exception
+  // 4. invalid situations when updating globalMax
+  //      root
+  //      /  \
+  //    null  null
 
-// Time:
+  //      root
+  //      /  \
+  //    null  right
+
+  //      root
+  //      /  \
+  //    left  null
+
+  // 5. valid situation when updating
+  //      root
+  //      /  \
+  //    left  right   (tell me the largest single path from a leaf to this child)  --> single path
+
+  // Solution:
+  // DFS:
+  // base case: reach the leaf(null), return 0
+  // recursive rule:
+  //    1.from child:  get the max sum of values in the path from one child to a leaf.
+  //    2.what I do:   if it is a valid situation, try to update globalMax. 与下一步的valid情况合并。
+  //    3.what I return: (the single path rooted at me)
+  //            if both children are not null: max(children results) + my.key,     [并且在这里做update globalMax, 相当于第二步]
+  //            if only one child is null: return (the other one) + my.key
+  //            if both are null: my.key
+
 
   public int maxPathSum(TreeNode root) {
     int[] globalMax = new int[1];
