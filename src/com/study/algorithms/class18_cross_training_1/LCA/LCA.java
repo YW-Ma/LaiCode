@@ -34,7 +34,7 @@ public class LCA {
   // input: root, one, two
   // output: a possible LCA or not.
 
-  public TreeNode lowestCommonAncestor(TreeNode root, TreeNode one, TreeNode two) {
+  public TreeNode lowestCommonAncestor1(TreeNode root, TreeNode one, TreeNode two) {
     // 物理意义：
     // LCA(root, one, two)的含义是：
     //    在以root为根的子树上，寻找并返回one和two的LCA。找不到则返回null。
@@ -49,12 +49,39 @@ public class LCA {
       return root;
     }
     // recursion rule:
-    TreeNode left = lowestCommonAncestor(root.left, one, two);
-    TreeNode right = lowestCommonAncestor(root.right, one, two);
+    TreeNode left = lowestCommonAncestor1(root.left, one, two);
+    TreeNode right = lowestCommonAncestor1(root.right, one, two);
     // 情况3
     if (left != null && right != null) {
       return root;
     }
     return left == null ? right : left; // 囊括1.2 两种情况
+  }
+
+  // 重听，用重听笔记：
+  // TreeNode {int key; TreNode left; TreeNode right;}
+  // must have a and b
+  // return the lca
+
+  //     root
+  //    / |||  \
+  //   b1      bn
+  //
+  // what I expect from my child: tell me a LCA candidate (LCA or one of target, or null)
+  // what I do: find out a LCA candidate
+  // case 1: I am one of target nodes --> return myself
+  // case 2: if got more than one --> return myself
+  // case 3: if only one child found --> pass it (target or LCA)
+  // case 4: all children return null --> return null
+  public TreeNode lca(TreeNode root, int a, int b) {
+    if (root == null || root.key == a || root.key == b) {
+      return root;
+    }
+    TreeNode left = lca(root.left, a, b);
+    TreeNode right = lca(root.right, a, b);
+    if (left != null && right != null) {
+      return root;
+    }
+    return left == null ? right : left;
   }
 }
