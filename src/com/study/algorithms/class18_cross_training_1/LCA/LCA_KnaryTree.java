@@ -25,7 +25,7 @@ public class LCA_KnaryTree {
   // what I expect from my child: tell me a LCA candidate (LCA or one of target, or null)
   // what I do: find out a LCA candidate
   // case 1: I am one of target nodes --> return myself
-  // case 2: if got more than one --> return myself
+  // case 2: if got more than one --> return myself --> use a "found" to record if necessary
   // case 3: if only one child found --> pass it (target or LCA)
   // case 4: all children return null --> return null
 

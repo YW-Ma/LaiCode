@@ -1,4 +1,4 @@
-package com.study.practice.class_19.InnerClass;
+package com.study.practice.class_19.InnerClass.Example2;
 
 import com.study.practice.class_19.InnerClass.Example2.People;
 import com.study.practice.class_19.InnerClass.Example2.SharedBikeUser;
