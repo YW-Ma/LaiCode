@@ -23,6 +23,20 @@ public class MyRainbowEnum {
     enum RainbowColor { RED, ORANGE, YELLOW, GREEN, CYAN, BLUE, PURPLE }
     enum WeekDayEnum { Mon, Tue, Wed, Thu, Fri, Sat, Sun }
 
+    // 定义带field和methods的enum：
+    enum RainbowColor2 {
+        RED(1, "RED"),
+        GREEN(2, "GREEN"),
+        BLUE(3, "BLUE");
+
+        int order;
+        String name;
+        RainbowColor2(int n, String name) {
+            this.order = n;
+            this.name = name;
+        }
+    }
+
     // 使用Enum：
     public void getToday(WeekDayEnum today) {
         switch(today) {
@@ -36,7 +50,7 @@ public class MyRainbowEnum {
         }
     }
 
-    public void tryMethods() {
+    public void useMethods() {
         // values --> static method, 返回内容
         RainbowColor[] colors = RainbowColor.values();
         // ordinal --> non-static, belongs to an instance
@@ -47,5 +61,12 @@ public class MyRainbowEnum {
         System.out.println(Arrays.toString(colors));
         System.out.println(order);
         System.out.println(color);
+    }
+
+    public void advancedEnum() {
+        System.out.println(RainbowColor2.RED);
+        System.out.println(RainbowColor2.RED.name);
+        System.out.println(RainbowColor2.RED.order);
+
     }
 }
