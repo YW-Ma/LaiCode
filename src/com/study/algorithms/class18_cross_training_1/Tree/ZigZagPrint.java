@@ -32,22 +32,22 @@ public class ZigZagPrint {
                     TreeNode node = deque.pollLast();
                     res.add(node.key); // node必然非null
                     // 防止NPE，只有非null才放进去
-                    if (node.left != null) {
-                        deque.offerFirst(node.left);
-                    }
                     if (node.right != null) {
                         deque.offerFirst(node.right);
+                    }
+                    if (node.left != null) {
+                        deque.offerFirst(node.left);
                     }
                 }
             } else {
                 for (int i = 0; i < size; i++) {
                     TreeNode node = deque.pollFirst();
                     res.add(node.key);
-                    if (node.right != null) {
-                        deque.offerLast(node.right);
-                    }
                     if (node.left != null) {
                         deque.offerLast(node.left);
+                    }
+                    if (node.right != null) {
+                        deque.offerLast(node.right);
                     }
                 }
             }
@@ -57,3 +57,58 @@ public class ZigZagPrint {
         return res;
     }
 }
+
+/*
+To enable screen reader support, press Ctrl+Alt+Z To learn about keyboard shortcuts, press Ctrl+slash
+Lowest Common Ancestor Of M Nodes In A K-nary Tree
+Given M nodes in a K-nary tree, find their lowest common ancestor.
+
+https://app.laicode.io/app/problem/648
+
+public class LCAVI {
+  static class KnaryTreeNode {
+    int key;
+    List<KnaryTreeNode> children;
+
+    public KnaryTreeNode(int key) {
+      this.key = key;
+      this.children = new ArrayList<>();
+    }
+  }
+
+  // TC: O(n)
+  // SC: O(h + m)
+  public KnaryTreeNode lowestCommonAncestor(KnaryTreeNode root, List<KnaryTreeNode>
+nodes) {
+    // Assumptions: the list of nodes is not null or not empty,
+    // all the nodes in the list are guaranteed to be in the tree.
+    Set<KnaryTreeNode> set = new HashSet<KnaryTreeNode>(nodes);
+    return helper(root, set);
+  }
+
+  private KnaryTreeNode helper(KnaryTreeNode root, Set<KnaryTreeNode> set) {
+    if (root == null || set.contains(root)) {
+      return root;
+    }
+    KnaryTreeNode found = null;
+    for (KnaryTreeNode child : root.children) {
+      KnaryTreeNode node = helper(child, set);
+      if (node == null) {
+        continue;
+      }
+      if (found == null) {
+        found = node;
+      } else {
+        return root;
+      }
+    }
+    return found;
+  }
+}
+
+Lowest Common Ancestor Of M Nodes In A K-nary Tree
+Turn on screen reader support
+
+Process finished with exit code 0
+
+* */
