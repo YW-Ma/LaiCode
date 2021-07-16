@@ -17,13 +17,39 @@ import java.util.*;
 // such that the two words do not share any common characters.
 public class LargestLengthProduct {
     public int largestProduct(String[] dict) {
+        /** 预处理，获得bitMasks 即每个单词的 字母set。 开销是O(n*L)*/
         // Assumptions: dict is not null and has length >= 2,
         // there is no null String in the dict.
         // The words in the dict only use characters 'a' - 'z'.
         // Get the bit mask for each of the word in the dict,
         // the bit mask is represented by the lowest 26 bits of an integer.
         // each of the bit represents one of the characters in 'a' - 'z'.
-        HashMap<String, Integer> bitMasks = getBitMasks(dict);
+        HashMap<String, Integer> bitMasks = getBitMasks(dict);              // int其实是一个set。有26bit的0、1代表是否出现字母
+    
+        /**不用BFS-2做法如下
+         *  for for loop 枚举所有对，并且用HashMap检查是否有共同字符
+         *  然后update 一个globalMax
+         * */
+        
+        
+        
+        /**BFS-2做法如下
+         * 先获得长度乘积最大的，看有没有共同字符。如果有就找次大的，否则返回。
+         * 为了先获得长度乘积最大的，需要先对size排序。
+         * 如何找次大的？ 也需要一个 for for loop, 在sorted 以后的 word list里面找。
+         * 但是 s1*s2 --> s1 * s3 --> ...
+         *         \---> s2 * s3 --> ...
+         *     实际上是一个graph
+         *     我们把第一个乘数认为是"行号"， 第二个乘数认为是"列号" 那么其实是一个matrix
+         *     s1*s2,  s1*s3, s1*s4 ...
+         *             s2*s3, s2*s4 ...
+         *                    s3*s4 ...
+         *
+         * 时间复杂度是什么呢？
+         *  - 预处理相同
+         *  - 计算的时间 ?????
+         * */
+        
         // sort the dict by length of the words in descending order.
         Arrays.sort(dict, new Comparator<String>() {
             @Override
@@ -48,7 +74,7 @@ public class LargestLengthProduct {
                 int iMask = bitMasks.get(dict[i]);
                 int jMask = bitMasks.get(dict[j]);
                 // if two words do not share any common characters,
-                // the bit masks \"and\" result should be 0 since
+                // the bit masks "and" result should be 0 since
                 // there is not any position such that in the two bit masks
                 // they are all 1.
                 if ((iMask & jMask) == 0) {
@@ -59,6 +85,7 @@ public class LargestLengthProduct {
         return largest;
     }
     
+    // 预处理，用Int存储"set"，把dict中每个单词的set获得到。
     // Get the bit mask for each of the words.
     private HashMap<String, Integer> getBitMasks(String[] dict) {
         HashMap<String, Integer> map = new HashMap<String, Integer>();

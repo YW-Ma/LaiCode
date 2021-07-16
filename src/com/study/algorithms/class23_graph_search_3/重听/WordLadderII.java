@@ -12,6 +12,30 @@ package com.study.algorithms.class23_graph_search_3.重听;
 //change only one letter and the resultant word must be in the input dictionary.
 //https://app.laicode.io/app/problem/662
 
+
+/**
+ * - 与edit distance不同，只能有一个操作（更换一个字母，且更换后需要在wordList里面）
+    - 求最少步数 --> 要么DP、要么BFS1. 优先BFS1试试
+        - 点：一个word
+        - 边：一个可行变化，如何efficiently find neighbors？
+            - 低效找邻居方案：把所有单词都撸一遍，看不同的字母是否只差1个。每次expand的时候需要 O(n)*O(wordLength)。最后导致O(n^2 * wordLength)
+            - (优秀方法)：生成出所有一次可达的单词，然后看这些结果是否在wordList里面。由于只有26个字母，所以是 O(26 * wordLength) --> O(wordLength)
+        
+    - 需要HashMap判重+记录steps
+ 
+ 开销： O(V * 26*L * L)
+           各情况   求hashCode
+ V是num of words
+ L是length
+ 
+ - FollowUps: 如何把ladder打印出来呢？
+    - 把 parent记录下来，知道是从谁generate出来的。
+    - 可以写成一个HashMap 叫 predecessor
+    - 凡是BFS还需要路径，那么就用这个方案
+ 
+ - FollowUpsII: 如何把所有的shortest wordLadder打印出来（可能有多个最短path）
+ */
+
 import java.util.*;
 
 public class WordLadderII {

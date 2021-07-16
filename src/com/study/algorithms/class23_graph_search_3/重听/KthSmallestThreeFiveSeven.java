@@ -2,10 +2,6 @@ package com.study.algorithms.class23_graph_search_3.重听;
 
 import java.util.*;
 //"193 Kth Smallest With Only 3,5,7 As Factors
-//Request edit access
-//
-//
-//Share
 //FileEditViewToolsHelp
 //To enable screen reader support, press ⌘+Option+Z To learn about keyboard shortcuts, press ⌘slash
 //Kth Smallest With Only 3,5,7 As Factors
