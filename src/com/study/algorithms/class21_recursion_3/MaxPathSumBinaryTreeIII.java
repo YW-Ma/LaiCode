@@ -3,6 +3,7 @@ package com.study.algorithms.class21_recursion_3;
 import com.study.util.TreeNode;
 
 public class MaxPathSumBinaryTreeIII {
+    // https://app.laicode.io/app/problem/140  注意这个题的坑点：
     // Two Requirements:
     // 1.只能是人字形path的一条腿
     // Both the starting and ending node
@@ -15,7 +16,7 @@ public class MaxPathSumBinaryTreeIII {
     // 2. what i do: inherit or not, and get the max one
     // 3. what i report: max
     
-    // Problem: can not get the largest ↑
+    // Problem: can not get the largest ↑    【坑点在这里】
     // e.g.:  100 10 -99999999 1000000,
     // then it will return 110, since 10 lose the 1000000.
     
