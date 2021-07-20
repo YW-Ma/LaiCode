@@ -1,4 +1,4 @@
-package com.study.algorithms.class21_recursion_3;
+package com.study.algorithms.class21_recursion_3.BottomUp;
 
 import com.study.util.TreeNode;
 

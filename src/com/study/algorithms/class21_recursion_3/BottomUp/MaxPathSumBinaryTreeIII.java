@@ -1,8 +1,9 @@
-package com.study.algorithms.class21_recursion_3;
+package com.study.algorithms.class21_recursion_3.BottomUp;
 
 import com.study.util.TreeNode;
 
 public class MaxPathSumBinaryTreeIII {
+    // max path any to any 一条线上
     // https://app.laicode.io/app/problem/140  注意这个题的坑点：
     // Two Requirements:
     // 1.只能是人字形path的一条腿

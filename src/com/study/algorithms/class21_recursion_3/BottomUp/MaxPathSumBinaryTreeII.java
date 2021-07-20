@@ -1,8 +1,9 @@
-package com.study.algorithms.class21_recursion_3;
+package com.study.algorithms.class21_recursion_3.BottomUp;
 
 import com.study.util.TreeNode;
 
 public class MaxPathSumBinaryTreeII {
+    // max path any to any (人字形path)
     // https://app.laicode.io/app/problem/139
     public int maxPathSum(TreeNode root) {
         int[] globalMax = new int[]{Integer.MIN_VALUE};
