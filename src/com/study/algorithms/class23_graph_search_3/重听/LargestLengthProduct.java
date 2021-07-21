@@ -65,6 +65,7 @@ public class LargestLengthProduct {
         for (int i = 0; i < word.length(); i++) {
             mask |= 1 << (word.charAt(i) - 'a');
         }
+        return mask;
     }
     
     
@@ -114,7 +115,7 @@ public class LargestLengthProduct {
     
     // 预处理，用Int存储"set"，把dict中每个单词的set获得到。
     // Get the bit mask for each of the words.
-    private HashMap<String, Integer> getBitMasks2(String[] dict) {
+    private HashMap<String, Integer> getBitMasks(String[] dict) {
         HashMap<String, Integer> map = new HashMap<String, Integer>();
         for (String str : dict) {
             int bitMask = 0;
