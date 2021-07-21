@@ -52,13 +52,10 @@
   - 找到字典strings中的两个string，使得他们之间没有共同字符，并且长度乘积最大
     - no common letters 怎么实现，注意 abc和cab 也是common。\
        预处理，获得bitMasks 即每个单词的 字母set。 开销是O(n*L)
-  - 不用BFS-2做法如下\
+  - **不用BFS-2做法如下**\
     for for loop 枚举所有对，并且用HashMap检查是否有共同字符\
     然后update 一个globalMax
-  
-  
-  
-  - BFS-2的做法如下
+  - **BFS-2的做法如下**\
     先获得长度乘积最大的，看有没有共同字符。如果有就找次大的，否则返回。
     - 为了先获得长度乘积最大的，需要先对size排序。
     - 如何找次大的？ 也需要一个 for for loop, 在sorted 以后的 word list里面找。   

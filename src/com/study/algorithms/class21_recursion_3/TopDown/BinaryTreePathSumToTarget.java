@@ -1,12 +1,18 @@
-package com.study.algorithms.class21_recursion_3.BottomUp;
+package com.study.algorithms.class21_recursion_3.TopDown;
 
 import com.study.util.TreeNode;
 
 import java.util.ArrayList;
 import java.util.List;
 
+// 这是TopDown，因为最底层的node知道的信息最多
 public class BinaryTreePathSumToTarget {
     // https://app.laicode.io/app/problem/141
+    // Solution 0: pre-Order to iterate over the whole tree,
+    //  and for each current node (X), we do a for loop in {X ... original_root} to find target
+    // To remember the {X ... root} we need a List
+    // To keep the target, we need to pass it.
+    // Time: O(n * height) = O(n^2) 因为n个node，每个node有for loop撸一遍最长为height的list。
     
     // Basic Solution [top-down pass prefix]
     public boolean exist(TreeNode root, int target) {
