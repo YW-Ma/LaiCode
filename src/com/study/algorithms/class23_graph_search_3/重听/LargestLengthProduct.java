@@ -37,6 +37,9 @@ import java.util.*;
  *  然后update 一个globalMax
  * */
 
+    // 时间复杂度： 预处理开销 O(n * word_length)
+    //            + check开销 O(n*n)
+    //            = 综合开销 O(n*n)
 
 public class LargestLengthProduct {
     public int largestProduct(String[] dict) {
