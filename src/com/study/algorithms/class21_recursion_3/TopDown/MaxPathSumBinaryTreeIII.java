@@ -31,25 +31,42 @@ public class MaxPathSumBinaryTreeIII {
         return max[0];
     }
     
-    private int maxPathSum(TreeNode root, int prefix, int[] max) {
-        prefix = Math.max(0, prefix) + root.key;
-        // 检查从当前root到任意后继结点的max value（prefix < 0 则不继承）。更新最大值
-        if (root.left == null && root.right == null) {
-            max[0] = Math.max(max[0], prefix);
-            return prefix;
+    private void maxPathSum(TreeNode root, int prefix, int[] max) {
+        if (root == null) {
+            return;
         }
-        if (root.left == null) {
-            int curMax = maxPathSum(root.right, prefix, max);
-            max[0] = Math.max(max[0], curMax);
-            return curMax;
+        if (prefix < 0) {
+            prefix = root.key;
+        } else {
+            prefix += root.key;
         }
-        if (root.right == null) {
-            int curMax = maxPathSum(root.left, prefix, max);
-            max[0] = Math.max(max[0], curMax);
-            return curMax;
-        }
-        int curMax = Math.max(maxPathSum(root.right, prefix, max), maxPathSum(root.left, prefix, max));
-        max[0] = Math.max(max[0], curMax);
-        return curMax;
+        
+        max[0] = Math.max(max[0], prefix);
+        maxPathSum(root.right, prefix, max);
+        maxPathSum(root.left, prefix, max);
+        
+        
+//        prefix = Math.max(0, prefix) + root.key;
+//        // 检查从当前root到任意后继结点的max value（prefix < 0 则不继承）。更新最大值
+//        if (root.left == null && root.right == null) {
+//            max[0] = Math.max(max[0], prefix);
+//            return prefix;
+//        }
+//        if (root.left == null) {
+//            int curMax = maxPathSum(root.right, prefix, max);
+//            max[0] = Math.max(max[0], curMax);
+//            return curMax;
+//        }
+//        if (root.right == null) {
+//            int curMax = maxPathSum(root.left, prefix, max);
+//            max[0] = Math.max(max[0], curMax);
+//            return curMax;
+//        }
+//        int curMax = Math.max(maxPathSum(root.right, prefix, max), maxPathSum(root.left, prefix, max));
+//        max[0] = Math.max(max[0], curMax);
+//        return curMax;
+        
+        // 这个方法应该是对返回值的理解错误了，我们不应该通过返回值来记录任何东西。而是应该用前缀来记录各path的sum。
+        // 用返回值记录的话，就是bottom-up了。
     }
 }

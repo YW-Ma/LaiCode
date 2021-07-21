@@ -50,7 +50,7 @@ public class LargestLengthProduct {
         }
         
         // 2. for for loop, check each pair to get max product
-        int maxProduct = Integer.MIN_VALUE;
+        int maxProduct = 0;
         for (int i = 0; i < dict.length; i++) {
             for (int j = i + 1; j < dict.length; j++) {
                 // check dict[i] and dict[j] don't have common letter
