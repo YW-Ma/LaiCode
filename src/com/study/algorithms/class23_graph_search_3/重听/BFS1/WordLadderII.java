@@ -1,4 +1,4 @@
-package com.study.algorithms.class23_graph_search_3.重听;
+package com.study.algorithms.class23_graph_search_3.重听.BFS1;
 
 //"662 Word Ladder II
 //Request edit access
@@ -121,6 +121,7 @@ public class WordLadderII {
             return new ArrayList<>();
         }
         
+        // Pre-process Input: build an ArrayList word list  (if .indexOf method fail, then we cannot use input wordlist directoly)
         List<String> words;
         int beginIndex = wordList.indexOf(beginWord);
         if (beginIndex == -1) {
@@ -132,8 +133,10 @@ public class WordLadderII {
             words = wordList;
         }
         
+        // Step 1: prepare NeighborFinder --> use a HashMap to record all possible target, each call will try 'a'-'z' convert for each letter.
         NeighborFinder finder = new NeighborFinder(words);
         
+        // Step 2: BFS (explore the graph layer by layer)
         Queue<Integer> queue = new ArrayDeque<>();
         int[] step = new int[words.size()];
         Arrays.fill(step, -1);
@@ -146,13 +149,13 @@ public class WordLadderII {
             if (x == endIndex) {
                 return tracer.findLadders(beginIndex, endIndex);
             }
-            for (int y : finder.findNeighbors(x)) {
+            for (int y : finder.findNeighbors(x)) { // find neighbors for nodes in queue
                 if (step[y] == -1) {
                     queue.offer(y);
                     step[y] = step[x] + 1;
                 }
                 if (step[x] + 1 == step[y]) {
-                    tracer.addPredecessor(x, y);
+                    tracer.addPredecessor(x, y); // the tracer is set to record the path.
                 }
             }
         }

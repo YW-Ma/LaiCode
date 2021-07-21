@@ -1,4 +1,4 @@
-package com.study.algorithms.class23_graph_search_3.重听;
+package com.study.algorithms.class23_graph_search_3.重听.BFS2;
 
 import java.util.*;
 //"193 Kth Smallest With Only 3,5,7 As Factors

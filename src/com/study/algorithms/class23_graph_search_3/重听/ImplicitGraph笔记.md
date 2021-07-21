@@ -1,16 +1,24 @@
-***Implicit graphs:***
+# Implicit graphs:
 - Find k-th smallest in sorted matrix
-    - 靠脑补把sorted matrix脑补成graph，然后用BFS
+  - 靠脑补把sorted matrix脑补成graph，然后用BFS
 - All subset
-    - 先脑补出recursion tree，然后再做DFS
+  - 先脑补出recursion tree，然后再做DFS
 - DP 火柴题
-    - 下、右 两个Edge
-    
-**Key Challenges**
-- what is node, what is edge
-- efficiently finding neighbors
+  - 下、右 两个Edge
+  
+## 什么时候用DP、BFS1、BFS2、DFS
+- DP：也是最小距离、最小步数。 可以先try一下能不能做出来。
+- BFS1 的flooding性质--> 分层或者求步数（即层数）
+- BFS2 求最短路径相关的
+- DFS 剩下的题目
 
-**Q1 BFS-1 on implicit graphs**
+    
+## Key Challenges
+- what is node, what is edge    基础是要能学会建模
+- efficiently finding neighbors 关键是如何高效找neighbors
+
+
+### Q1 BFS-1 on implicit graphs
 - [Seven Puzzle](./SevenPuzzle.java)
   - 最小步数 --> BFS1 or DP
     - 点：棋盘状态
@@ -26,7 +34,7 @@
   
 
 - [Word Ladder](./WordLadderII.java)
-- 与edit distance不同，只能有一个操作（更换一个字母，且更换后需要在wordList里面）
+- 与edit distance不同，只能有一个操作（更换一个字母，且更换后的单词需要在wordList里能找到）
 - 求最少步数 --> 要么DP、要么BFS1. 优先BFS1试试
   - 点：一个word
   - 边：一个可行变化，如何efficiently find neighbors？
@@ -37,7 +45,7 @@
 -  开销： `O(V * 26*L * L)`\
    `26 * L`求各情况   `L`求hashCode\
    `V`是num of words\
-   `L`是length\
+   `L`是word length
 
 - FollowUps: 如何把ladder打印出来呢？
   - 把 parent记录下来，知道是从谁generate出来的。
@@ -47,7 +55,7 @@
 - FollowUpsII: 如何把所有的shortest wordLadder打印出来（可能有多个最短path）
   
 
-**Q2 BFS-2 on implicit graphs**
+### Q2 BFS-2 on implicit graphs
 - [没共同字符并且长度乘积最大](./LargestLengthProduct.java)
   - 找到字典strings中的两个string，使得他们之间没有共同字符，并且长度乘积最大
     - no common letters 怎么实现，注意 abc和cab 也是common。\
@@ -115,8 +123,4 @@
   
 
 
-**什么时候用DP、BFS1、BFS2、DFS**
-- DP：也是最小距离、最小步数。 可以先try一下能不能做出来。
-- BFS1 的flooding性质--> 分层或者求步数（即层数）
-- BFS2 求最短路径相关的
-- DFS 剩下的题目
+

@@ -1,4 +1,4 @@
-package com.study.algorithms.class23_graph_search_3.重听;
+package com.study.algorithms.class23_graph_search_3.重听.BFS2;
 
 //"194 Kth Closest Point To <0,0,0>
 //Request edit access

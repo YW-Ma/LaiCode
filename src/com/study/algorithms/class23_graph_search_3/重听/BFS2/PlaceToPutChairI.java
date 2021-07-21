@@ -1,4 +1,4 @@
-package com.study.algorithms.class23_graph_search_3.重听;
+package com.study.algorithms.class23_graph_search_3.重听.BFS2;
 
 /*"195 Place To Put Chair I
 Request edit access

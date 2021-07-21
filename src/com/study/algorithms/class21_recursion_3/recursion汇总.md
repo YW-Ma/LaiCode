@@ -18,7 +18,7 @@
 2. **straight path sum to a target**
     - [top-down](./TopDown/BinaryTreePathSumToTarget.java): iterate over the tree, 每次检查是否有target path在头上出现过  O(n*height)
       - 为了检查，需要记录自己头上的path，然后用O(height) 来撸一遍
-    - [top down](./TopDown/BinaryTreePathSumToTarget2.java)：iterate over the tree, 每次记录prefix_sum，并且通过下方逻辑求是否有target在自己上面出现过。 O(n)
+    - [top down（高效但是易错）](./TopDown/BinaryTreePathSumToTarget2.java)：iterate over the tree, 每次记录prefix_sum，并且通过下方逻辑求是否有target在自己上面出现过。 O(n)
       - if cur_prefix_sum - target = historical_prefix_sum
       - 即 当前路径 - 半中央到当前节点的路径 = root到某个历史上的点的路径
       - 那么我们知道，这个历史上的点，到当前节点，就是和威target的路径。
