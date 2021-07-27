@@ -52,5 +52,4 @@ public class Subsequence {
         }
         return globalMax;
     }
-    
 }
