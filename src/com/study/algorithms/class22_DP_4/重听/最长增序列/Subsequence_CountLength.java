@@ -1,6 +1,6 @@
 package com.study.algorithms.class22_DP_4.重听.最长增序列;
 
-public class Subsequence {
+public class Subsequence_CountLength {
     public int longest_after_review(int[] array) {
         // review的修改：
         // 1. 可以沈略prev，prev的比较逻辑是可以和i的更新逻辑合并的。

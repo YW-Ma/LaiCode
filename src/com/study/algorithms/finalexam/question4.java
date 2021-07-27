@@ -11,7 +11,7 @@ public class question4 {
   //               名字接龙，而且能构成循环
 
   // DFS:
-  // how many layers: num of names
+  // how many layers: num of names(seats)
   // what a layer do: select the correct name from the remaining names.
   // how many branch: depends on the # of matched students, O(n) n is the number of names.
 
