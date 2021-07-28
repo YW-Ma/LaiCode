@@ -1,6 +1,3 @@
-package com.study.algorithms.class13_DP_3.重听.PrefixSum;
-
-public class Reademe_存prefix用于滑动窗口 {
     // 先看一个题目：
     // {3,2,1,4,5,3,2,6}
     // Given an integer array A[N] --> there are repeated queries asking for the sum between A[i] and A[j]
@@ -29,5 +26,3 @@ public class Reademe_存prefix用于滑动窗口 {
     //              step 1: using the column-wise prefix sum to 拍扁
     //              step 2: 求largest subarray
     //          枚举所有top-row,bottom-row组合 O(n^2)
-
-}
