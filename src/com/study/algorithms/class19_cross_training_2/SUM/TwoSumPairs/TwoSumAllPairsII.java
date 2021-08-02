@@ -1,4 +1,4 @@
-package com.study.algorithms.class19_cross_training_2.SUM;
+package com.study.algorithms.class19_cross_training_2.SUM.TwoSumPairs;
 
 import java.util.*;
 
@@ -8,15 +8,22 @@ import java.util.*;
 
 // 之前用了一个HashMap，记录一个value对应的index是哪些。
 // 现在如果还用这个，那就代表"当前元素"被使用了多次，而且未来还打算继续使用。 这是不行的。
+// 所以现在应该用一个HashMap，记录一个value目前还有多少次可以被使用，如果是没有这个key，或者value是0，就代表不能用。
 
 public class TwoSumAllPairsII {
     public List<List<Integer>> allPairs(int[] array, int target) {
         List<List<Integer>> res = new ArrayList<>();
         Map<Integer, Integer> valueToCount = new HashMap<>();
-        for (int num : array) {
-            Integer count = valueToCount.get(num);
-            if (num * 2 == target && count != null && count == 1) {  // 注意这一行的写法，注意他必须在下方分支的前面。
+        for (int i = 0; i < array.length; i++) {
+            Integer count = valueToCount.get(target - array[i]);
+            if (count == null || count == 0) {
+                valueToCount.put(array[i], valueToCount.getOrDefault(array[i], 0) + 1);
+                continue;
+            }
             
+            if (count >= 1) {
+                valueToCount.put(target - array[i], count - 1);
+                res.add(Arrays.asList(target - array[i], array[i]));
             }
         }
         return res;
