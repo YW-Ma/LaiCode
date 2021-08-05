@@ -21,3 +21,7 @@
   - **[for cannot match]**: add counter
 - Example: [1,1,1,1,1],2 => [1,1]   (should be distinct)
 
+- 优化：
+  - 如果想知道某个东西是否存在过，不要用 `getOrDefault(key, 0) >= 1`.  应该使用`.containsKey(key)`
+  
+
