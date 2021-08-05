@@ -8,7 +8,10 @@ public class ReplaceAandB {
 
     //    abaab
     // M 001112  ->   M[i]     change first i elements into 'a',  i [0,len]
-    // N  322100  <-  N[len-j] change last j elements into 'b',   j [0,len]
+    // N  322100  <-  N[len-i] change last i elements into 'b',
+    // 中文：
+    // M[i] 代表前i个字母变成a的开销。base case是i==0，即一个字母都不变（开销0）。 最大是len，即前len个字母都变'a'.
+    // N[len - i] 代表后i个字母变成b的开销。base case是i==0，即N[len]，即一个字母都不变（开销0）。 最大是len，即N[0]，即后len个字母都变'b'.
 
     // globalMin = min(M[k] + N[k+1]), change first i into 'a' and remaining part to 'b',  k in [0, len - 1]
     // i.e.:   abaab
@@ -18,6 +21,7 @@ public class ReplaceAandB {
 
     // len == 1 --> M, N is valid, globalMin is not valid   >>>> so len <= 1 should be put in base case.
     // len == 2 --> M, N is valid, globalMin is valid
+
     public int minReplacements(String input) {
         if (input == null || input.length() <= 1) {
             return 0;
@@ -37,11 +41,10 @@ public class ReplaceAandB {
             if (input.charAt(i - 1) != 'a') { // index of first i elements is (i-1)
                 M[i]++;
             }
-        }
-        for (int j = len - 1; j >= 0; j--) { // [j, end] elements
-            N[j] = N[j + 1];
-            if (input.charAt(j) != 'b') {
-                N[j]++;
+
+            N[len - i] = N[len - i + 1];
+            if (input.charAt(len - i) != 'b') {
+                N[len - i]++;
             }
         }
 
@@ -54,3 +57,4 @@ public class ReplaceAandB {
         return globalMin;
     }
 }
+
