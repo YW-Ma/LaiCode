@@ -42,6 +42,16 @@ public class KthSmallestNumber {
         }
     }
 
+    // Time Complexity:
+    // 1. minHeap操作开销：每次是保持堆序性，需要O(height)开销，由于是CBT，所以是O(logn),n = num of nodes
+    // 2. 这里每一个node需要进行一次操作，最多操作k个node，minHeap最大也就是logk这么高。 （因为for循环只进行k-1次），
+    // 所以，time是 O(k * logk)
+
+    // Space Complexity:
+    // 1. size of visited: O(m*n), m,n is rows and cols.
+    // 2. size of pq: O(k)
+    // space: O(mn + k)
+
     public int kthSmallest(int[][] matrix, int k) {
         Queue<Cell> pq = new PriorityQueue<Cell>(); // 如果不提供compareTo，那么会 o1.toString().compareTo()   可以在这里提供new Comparator, 或者在Cell里implements一个Comparable。
         pq.add(new Cell(matrix[0][0], 0, 0));
