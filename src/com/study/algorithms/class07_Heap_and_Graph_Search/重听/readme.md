@@ -1,11 +1,11 @@
 # Breadth First Search
-1. a FIFO queue
+1. a `FIFO` queue
 
 - [Get Keys in Binary Tree Layer By Layer](./LayerByLayer.java)
     - 注意expand的时候，不要expand会让generate时NPE的东西。（即检查是否为null，非null才generate）
 
 # Best First Search
-1. a Priority queue
+1. a `Priority` queue
 2. Time Complexity:
    - Min(or Max) Heap, and `insert` and `remove` operations take `O(hgeight) = O(log n)` time.
 
@@ -39,7 +39,8 @@
 ```
 ```
  如何记录？
- 
- 通过一个HashMap来查conflict，key是node（node），value是set归属（颜色）
+    通过一个HashMap来查conflict，key是node（node），value是set归属（颜色）
+ 如何一个一个访问？
+    通过BFS，flooding地访问。
 ```
 
