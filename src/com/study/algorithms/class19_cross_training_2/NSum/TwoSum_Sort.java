@@ -1,4 +1,4 @@
-package com.study.algorithms.class19_cross_training_2.SUM;
+package com.study.algorithms.class19_cross_training_2.NSum;
 
 import java.util.Arrays;
 

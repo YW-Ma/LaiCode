@@ -1,4 +1,4 @@
-package com.study.algorithms.class19_cross_training_2.SUM.TwoSumPairs;
+package com.study.algorithms.class19_cross_training_2.TwoSumPairs;
 
 import java.util.*;
 
