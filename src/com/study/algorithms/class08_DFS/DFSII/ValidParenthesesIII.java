@@ -52,13 +52,13 @@ public class ValidParenthesesIII {
             } else { // 右括号
                 if (!stack.isEmpty() && stack.peekFirst() == i - 1) { // priority - 想加入右括号，栈顶元素必须是我的左括号
                     cur.append(PS[i]);
-                    stack.offerFirst(i);
+                    int top = stack.pollFirst(); // 把栈顶元素抵消掉
                     remain[i]--;
 
                     helper(cur, stack, remain, targetLen, result);
 
                     cur.deleteCharAt(cur.length() - 1);
-                    stack.pollFirst();
+                    stack.offerFirst(top); // 恢复栈顶元素为原先的那样 (top == i - 1 其实）
                     remain[i]++;
                 }
             }
