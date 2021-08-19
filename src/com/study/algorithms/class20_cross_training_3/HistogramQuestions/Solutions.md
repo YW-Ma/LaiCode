@@ -1,6 +1,7 @@
 # Histogram Questions
 
 ## Solution 1 Fundamental
+[basic](LargestRectangleHistogram.java)
 - 上边界：某个bar的top
 - 下边界：x-axis
 - 左右边界：某个bar的index
@@ -18,7 +19,7 @@
 O(n^2)
 
 ## Solution 2 better idea(recommended)
-
+[better idea](LargestRectangleHistogram.java)
 ```
 solution 1是唯一的解决方案，
 我们只能提高获得每个index对应的左右边界的效率。
