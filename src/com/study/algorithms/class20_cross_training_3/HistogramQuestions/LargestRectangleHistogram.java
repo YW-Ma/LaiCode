@@ -3,21 +3,6 @@ package com.study.algorithms.class20_cross_training_3.HistogramQuestions;
 import java.util.*;
 
 public class LargestRectangleHistogram {
-    //  0 1 2 3 4
-    // [2,1,3,4,1]
-    //  | |                 1-0 * 2 = 2
-    //    | |               2-1 * 1 = 1
-    //      |    |          4-2 * 3 = 6
-    //  |          | <-- 极端情况但是发现依然符合 5-0 * 1 = 5  只是注意不能把rb拿来进行下标访问。
-
-    // let left be inclusive
-    // let right be exclusive
-    public int largest(int[] array) {
-
-    }
-
-
-
     // 参考资料：
 
     // Histogram题目
