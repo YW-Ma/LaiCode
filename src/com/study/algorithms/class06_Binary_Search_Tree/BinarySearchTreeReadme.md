@@ -73,4 +73,27 @@ Find the target key K in the given binary search tree,
 return the node that contains the key if K is found, 
 otherwise return null.
 ```
+```
+tail recursion 尾递归。
+所以可以改写成recursion格式的。
+把base case取反就是while的条件，while外面作为base case。 
+```
+
+## Insert
+[Insert](./Insert.java)
+```
+Insert a key into a tree (give me a root)
+1. find location
+2. insert
+3. try recursion first, and try to update to a iteration version
+```
+
+```
+output: new root node (root may change)
+```
+
+
+## Delete
+[Delete](./Delete.java)
+
 
