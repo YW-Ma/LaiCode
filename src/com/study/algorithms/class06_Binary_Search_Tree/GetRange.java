@@ -7,26 +7,23 @@ import java.util.List;
 
 public class GetRange {
   public List<Integer> getRange(TreeNode root, int min, int max) {
-    List<Integer> result = new ArrayList<>();
-    getRange(root, min, max, result);
-    return result;
+    List<Integer> range = new ArrayList<>();
+    inOrder(root, min, max, range);
+    return range;
   }
 
-  private void getRange(TreeNode root, int min, int max, List<Integer> result) {
+  private void inOrder(TreeNode root, int min, int max, List<Integer> range) {
     if (root == null) {
       return;
     }
-    // 1. determine whether left subtree should be traversed
-    if (root.key > min) {
-      getRange(root.left, min, max, result);
+    if (root.key >= min) {
+      inOrder(root.left, min, max, range);
     }
-    // 2. determine if the root node should be add into result;
     if (root.key >= min && root.key <= max) {
-      result.add(root.key);
+      range.add(root.key);
     }
-    // 3. determine whether right subtree should be traversed
-    if (root.key < max) {
-      getRange(root.right, min, max, result);
+    if (root.key <= max) {
+      inOrder(root.right, min, max, range);
     }
   }
 }
