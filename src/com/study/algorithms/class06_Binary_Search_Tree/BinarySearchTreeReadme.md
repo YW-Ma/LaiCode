@@ -65,3 +65,12 @@ assumption\
 1. input a root with range, output a List<Integer>
 2. if no keys, return empty list
 ```
+
+## Search
+[Search](./Search.java)
+```
+Find the target key K in the given binary search tree, 
+return the node that contains the key if K is found, 
+otherwise return null.
+```
+
