@@ -4,9 +4,9 @@ import java.util.Arrays;
 
 public class Tester {
   public static void main(String[] args) {
-    ClassicalBinarySearch bs = new ClassicalBinarySearch();
-    int result1 = bs.binarySearch(new int[]{1, 3, 5, 7, 9}, 9);
-    System.out.println(result1); // 4
+//    ClassicalBinarySearch bs = new ClassicalBinarySearch();
+//    int result1 = bs.binarySearch(new int[]{1, 3, 5, 7, 9}, 9);
+//    System.out.println(result1); // 4
 
     SearchInSortedMatrix bsMatrix = new SearchInSortedMatrix();
     int[][] matrix = {{1, 3, 5}, {7, 9, 11}};

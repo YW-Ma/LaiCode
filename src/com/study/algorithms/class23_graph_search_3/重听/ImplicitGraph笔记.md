@@ -19,13 +19,13 @@
 
 
 ### Q1 BFS-1 on implicit graphs
-- [Seven Puzzle](./SevenPuzzle.java)
+- [Seven Puzzle](./BFS1/SevenPuzzle.java)
   - 最小步数 --> BFS1 or DP
     - 点：棋盘状态
     - 边：可变化情况4个
   - 一般做最小步数，都需要HashMap。存储Board到Steps Num。 两个作用：
     1. 判重复  （图里有环），HashSet也可以判重。
-    2. 从起点到当前的最小步数，HashSet不能记录
+    2. 从起点到当前的最小步数 （HashSet不能记录，所以要用Map）
   - 为什么BFS可以求最优解：因为它是"flooding"，所以会先遇到最优解，才会遇到次优解
   - Follow-up: What if there are thousands of queries? How to minimize the processing time for each query?
     (即不断有人问各种状态到final状态的步数。)
@@ -33,7 +33,7 @@
     - 优化预处理：因为是无向图，所以可以从final往回找：从final往回BFS，到达所有情况，并记录。 只需要O(E+V)
   
 
-- [Word Ladder](./WordLadderII.java)
+- [Word Ladder](./BFS1/WordLadderII.java)
 - 与edit distance不同，只能有一个操作（更换一个字母，且更换后的单词需要在wordList里能找到）
 - 求最少步数 --> 要么DP、要么BFS1. 优先BFS1试试
   - 点：一个word
@@ -56,7 +56,7 @@
   
 
 ### Q2 BFS-2 on implicit graphs
-- [没共同字符并且长度乘积最大](./LargestLengthProduct.java)
+- [没共同字符并且长度乘积最大](./BFS2/LargestLengthProduct.java)
   - 找到字典strings中的两个string，使得他们之间没有共同字符，并且长度乘积最大
     - no common letters 怎么实现，注意 abc和cab 也是common。\
        预处理，获得bitMasks 即每个单词的 字母set。 开销是O(n*L)
@@ -78,13 +78,13 @@
        - 预处理相同
        - 计算的时间 ????? 下课后计算一下
   
-- [找到 3^x+5^y+7^z 的最小值](./KthSmallestThreeFiveSeven.java)
+- [找到 3^x+5^y+7^z 的最小值](./BFS2/KthSmallestThreeFiveSeven.java)
   - node是一个状态
   - branch是三个，即x、y、z各增加1
   - 用BFS-2来找smallest
   - 下课后写一下
 
-- [给定k个器材和一些阻碍，找到一把chair，能让 到各器材距离sum 最小](./PlaceToPutChairI.java)
+- [给定k个器材和一些阻碍，找到一把chair，能让 到各器材距离sum 最小](./BFS2/PlaceToPutChairI.java)
   - 先做假设，二维矩阵，离散化chair和器材，让与它们相交的格子代表它们。
   - 走路的路径认为是四连通的，不要clarify为八连通的 （4-connect）
   - 最简单的思路：
@@ -99,7 +99,7 @@
     - 预处理获得一个三维矩阵：第一个维度是各个健身器材，第二、三个维度是到对应位置的开销
     - 开销 `O(k * RClogRC)`
 
-- [课程规划](./CourseScheduleII.java)
+- [课程规划](./BFS1/CourseScheduleII.java)
   - 给了先修课列表，实际上这些课的依赖关系是一个Graph。（implicit graph）
   - 第一门课必须是没有incoming edges的点
   - 每次学了一门课，就把他删掉（这样才能产生新的"没有predecessor的点"）
