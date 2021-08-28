@@ -11,6 +11,8 @@ public class Subsequence_CountLength_BinarySearchSolution {
     // if this is an empty space: take it (there must have enough space)
     // how to find the number: binary search
     // how many times:
+
+
     // 5 2 6 3 4 7 5
     // len    index
     // 1        2

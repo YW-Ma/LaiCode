@@ -7,9 +7,14 @@ public class LongestSubarrayContainsOnlyOnes {
     // k >= 0
 
     //  [1,1,0,0,1,1,1,0,0,0]  k = 2
+    //   [
+    //   ]
     //       ^ ^               这样有7
     //                 ^ ^     这样只有5
     // 转变题目：finding the longest subarray that contains at most k zeros
+
+    // Time Complexity: O(n^2) --> since we need to find the first zero that has been converted.
+    // SC: O(1)
 
     public int longestConsecutiveOnes(int[] nums, int k) {
         if (nums == null || nums.length <= 0) {
