@@ -3,17 +3,19 @@ package com.study.algorithms.class06_Binary_Search_Tree;
 import com.study.util.TreeNode;
 
 public class checkBST {
+  // TC: O(n)
+  // SC: O(height) worst O(n)
   public boolean isBST(TreeNode root) {
-    return isBST(root, Integer.MAX_VALUE, Integer.MIN_VALUE);
+    return isBST(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
   }
 
-  private boolean isBST(TreeNode root, int max, int min) {
+  private boolean isBST(TreeNode root, int minValue, int maxValue) {
     if (root == null) {
       return true;
     }
-    if (root.key >= max || root.key <= min) { //NOTICE: 闭区间。
+    if (root.key < minValue || root.key > maxValue) {
       return false;
     }
-    return isBST(root.left, root.key, min) && isBST(root.right, max, root.key);
+    return isBST(root.left, minValue, root.key - 1) && isBST(root.right, root.key + 1, maxValue);
   }
 }
