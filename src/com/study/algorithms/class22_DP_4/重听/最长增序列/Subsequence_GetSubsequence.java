@@ -2,7 +2,7 @@ package com.study.algorithms.class22_DP_4.重听.最长增序列;
 
 import java.util.*;
 
-public class Subsequence_GetSubsequence_S1 {
+public class Subsequence_GetSubsequence {
 
     // review: globalMax 可以被 globalMaxIndex代替，每次需要用globalMax的时候去访问length即可。 所以只需要一个变量，而不需要两个。
     public int[] longest(int[] array) {
