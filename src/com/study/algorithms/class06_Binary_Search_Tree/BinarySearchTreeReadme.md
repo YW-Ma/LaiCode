@@ -1,4 +1,4 @@
-# Binary Search Tree
+# [1] Basic Binary Search Tree Operations
 ```
 Binary Search Tree:
 for every node, 
@@ -6,7 +6,7 @@ for every node,
     all nodes in its right subtree is larger.
 ```
 
-## 54. Is Binary Search Tree Or Not
+## 1.1 Is Binary Search Tree Or Not
 [Is Binary Search Tree Or Not](./checkBST.java)
 ```
 Determine if a given binary tree is binary search tree.
@@ -30,7 +30,7 @@ what I resposne to my parent: boolean, is I and my children fit inside the range
 base case: current is null, return true.
 ```
 
-## 55. Get Keys In Binary Search Tree In Given Range
+## 1.2 Get Keys In Binary Search Tree In Given Range
 [Get Keys In Binary Search Tree In Given Range](./GetRange.java)
 
 ```
@@ -66,7 +66,7 @@ assumption\
 2. if no keys, return empty list
 ```
 
-## Search
+## 1.3 Search
 [Search](./Search.java)
 ```
 Find the target key K in the given binary search tree, 
@@ -79,7 +79,7 @@ tail recursion 尾递归。
 把base case取反就是while的条件，while外面作为base case。 
 ```
 
-## Insert
+## 1.4 Insert
 [Insert](./Insert.java)
 ```
 Insert a key into a tree (give me a root)
@@ -97,8 +97,7 @@ take away:
 1. 如果发现会和parent断开连接，不妨让new created node作为返回值，这样就连接上了。
 ```
 
-
-## Delete
+## 1.5 Delete
 [Delete](./Delete.java)
 ```
 core: return the updated root.
@@ -109,10 +108,10 @@ Algorithm
 - If `key > root.val` then delete the node to delete is in the right subtree `root.right = deleteNode(root.right, key)`.
 - If `key < root.val` then delete the node to delete is in the left subtree `root.left = deleteNode(root.left, key)`.
 - If `key == root.val` then the node to delete is right here. Let's do it :
-    - If the node is a `leaf`, the delete process is straightforward : root = null.
-    - If the node is not a leaf and `has the right child`, then `cherry-pick the smallest one in right subtree`, and update root by it. `return newRoot`
-    - If the node is not a leaf and `has only the left child`, then `return root.left`.
-Return root.
+  - If the node is a `leaf`, the delete process is straightforward : root = null.
+  - If the node is not a leaf and `has the right child`, then `cherry-pick the smallest one in right subtree`, and update root by it. `return newRoot`
+  - If the node is not a leaf and `has only the left child`, then `return root.left`.
+    Return root.
 
 参考[laioffer答案](https://docs.google.com/document/d/1Qimmqsz4we-YM88nSVKazlcxomsLXXOZrNdqzigExEM/edit)
 ```
@@ -132,7 +131,9 @@ Return root.
 在helper function里面分两类情况后处理，就可以实现这个目的。
 ```
 
-## 135. The Closest Number In Binary Search Tree
+# [2] Traversal + Comparing
+
+## 2.1 The Closest Number In Binary Search Tree
 [The Closest Number In Binary Search Tree](./ClosestNumberBST.java)
 ```
 In a binary search tree, find the node containing the closest number to the given target number.
@@ -167,4 +168,19 @@ res = 5
 2-4 > 5-4, don't update res;   2<4, root = root.right, 
 root == null --> return res, i.e. return 5.
 ---------
+```
+
+## 2.2 Find the Largest smaller element of a given target
+[Largest Smaller](./LargestSmaller.java)
+
+```
+这种有target的，可能都需要一边traversal一边解决
+
+- traversal的时候，携带一个res，在比较的时候更新它。
+- 退出条件为 cur == null
+
+这个题，如果 cur > target, 那么cur = cur.left;
+反之，cur = cur.right. 并更新res （res只可能越来越大，根本不需要判断。直接更新即可）
+
+由于是BST，所以会相当于先找到largest smaller所在的左子树，然后开始一路走最右侧路径，获得largest。
 ```
