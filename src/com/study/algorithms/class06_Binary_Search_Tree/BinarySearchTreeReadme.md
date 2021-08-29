@@ -110,8 +110,8 @@ Algorithm
 - If `key < root.val` then delete the node to delete is in the left subtree `root.left = deleteNode(root.left, key)`.
 - If `key == root.val` then the node to delete is right here. Let's do it :
     - If the node is a `leaf`, the delete process is straightforward : root = null.
-    - If the node is not a leaf and `has the right child`, then `replace the node value by a successor` value `root.val = successor.val`, and then recursively delete the successor in the right subtree `root.right = deleteNode(root.right, root.val)`.
-    - If the node is not a leaf and `has only the left child`, then `replace the node value by a predecessor` value `root.val = predecessor.val`, and then recursively delete the predecessor in the left subtree `root.left = deleteNode(root.left, root.val)`.
+    - If the node is not a leaf and `has the right child`, then `cherry-pick the smallest one in right subtree`, and update root by it. `return newRoot`
+    - If the node is not a leaf and `has only the left child`, then `return root.left`.
 Return root.
 
 参考[laioffer答案](https://docs.google.com/document/d/1Qimmqsz4we-YM88nSVKazlcxomsLXXOZrNdqzigExEM/edit)
@@ -129,4 +129,5 @@ Return root.
 删掉6会把7丢失掉。
 
 正确的做法是，如果发现 smallest.right != null, 就把它接到smallest本来该在的位置上。
+在helper function里面分两类情况后处理，就可以实现这个目的。
 ```

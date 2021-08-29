@@ -56,3 +56,39 @@ public class Delete {
         return cur;
     }
 }
+
+/*
+* ## Delete
+[Delete](./Delete.java)
+```
+core: return the updated root.
+```
+
+Algorithm
+
+- If `key > root.val` then delete the node to delete is in the right subtree `root.right = deleteNode(root.right, key)`.
+- If `key < root.val` then delete the node to delete is in the left subtree `root.left = deleteNode(root.left, key)`.
+- If `key == root.val` then the node to delete is right here. Let's do it :
+    - If the node is a `leaf`, the delete process is straightforward : root = null.
+    - If the node is not a leaf and `has the right child`, then `cherry-pick the smallest one in right subtree`, and update root by it. `return newRoot`
+    - If the node is not a leaf and `has only the left child`, then `return root.left`.
+Return root.
+
+参考[laioffer答案](https://docs.google.com/document/d/1Qimmqsz4we-YM88nSVKazlcxomsLXXOZrNdqzigExEM/edit)
+```
+上述的 has the right child 的情况，实际上是可以分为下述两个情况的：
+1. smallest是叶子 - 相安无事。
+2. smallest（6）还有个smallest.right存在（7）
+            5           target = 5.
+           / \
+          3    6        <-- 找到tar后，把右子树的smallest更新上去作为新root。
+        / \    / \
+       2  4   #   7
+上述例子中，会找到右侧的smallest即6
+如果使用：5变6，然后在新root的右子树中把smallest删掉，就会出问题。
+删掉6会把7丢失掉。
+
+正确的做法是，如果发现 smallest.right != null, 就把它接到smallest本来该在的位置上。
+在helper function里面分两类情况后处理，就可以实现这个目的。
+```
+* */
