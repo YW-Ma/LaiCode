@@ -131,3 +131,40 @@ Return root.
 正确的做法是，如果发现 smallest.right != null, 就把它接到smallest本来该在的位置上。
 在helper function里面分两类情况后处理，就可以实现这个目的。
 ```
+
+## 135. The Closest Number In Binary Search Tree
+[The Closest Number In Binary Search Tree](./ClosestNumberBST.java)
+```
+In a binary search tree, find the node containing the closest number to the given target number.
+
+Assumptions:
+
+The given root is not null.
+There are no duplicate keys in the binary search tree.
+Examples:
+
+    5
+  /    \
+2      11
+     /    \
+    6     14
+
+closest number to 4 is 5
+closest number to 10 is 11
+closest number to 6 is 6
+```
+
+```
+Hint: the in-order traversal of a BST, will get an ascending order array.
+Approach 1: recursive inorder + linear search, O(n) time
+Approach 2: iterative inorder, O(k) time, k-th element is the closest one.
+---------
+---------
+tar = 4
+
+res = 5
+5-4 == 5-4, don't update res； 5>4, root = root.left, 
+2-4 > 5-4, don't update res;   2<4, root = root.right, 
+root == null --> return res, i.e. return 5.
+---------
+```
