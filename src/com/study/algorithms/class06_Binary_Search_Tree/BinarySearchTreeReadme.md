@@ -184,3 +184,42 @@ root == null --> return res, i.e. return 5.
 
 由于是BST，所以会相当于先找到largest smaller所在的左子树，然后开始一路走最右侧路径，获得largest。
 ```
+
+## 2.3 Find k nodes that close to a target
+[ClosestKNodes](./ClosestKNodes.java)
+
+- [LeetCode题目](https://leetcode.com/problems/closest-binary-search-tree-value-ii/)
+- [LeetCode Solution](https://leetcode.com/problems/closest-binary-search-tree-value-ii/solution/)
+- Question:
+  - give a `root`, an int `k`, a `target` value.
+  - return the `k values in BST` that are closest to the `target` 
+  - can return in any order
+  
+- Prerequisites:
+  - In-Order traversal of a BST is an ascending order array
+  - Closest BST value can be found during traversal
+  - the kth smallest problem --> using heap to tackle, O(NlogK) or quickSelect in O(N).
+```
+- Solution：
+  Approach 1: heap, O(Nlogk)
+    - use a heap of capacity k, sorted by the distance to the target.
+  Approach 2: quickselect, O(N)
+    - quickselect: a typical algo to solve "find kth something"
+```
+[1]
+```
+Approach 1 O(N logk)
+- initialize the heap with "less close element first" strategy.
+- use In-Order Traversal to traverse the tree
+  - push all elements into heap dring the traversal (but keep the size <= k)
+- As a result, the heap contains k elements that are closest to target, convert it into a list to return.
+```
+![approach 2](./approach2.png)
+
+[2]
+```
+Approach 2 O(N), but O(N^2) is the worst case which is very rare and can be neglected.
+- convert the BST into an ascending array
+- do quick select
+```
+![approach 3](./approach3.png)
