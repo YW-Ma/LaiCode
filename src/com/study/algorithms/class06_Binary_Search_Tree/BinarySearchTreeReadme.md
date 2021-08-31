@@ -186,7 +186,6 @@ root == null --> return res, i.e. return 5.
 ```
 
 ## 2.3 Find k nodes that close to a target
-[ClosestKNodes](./ClosestKNodes.java)
 
 - [LeetCode题目](https://leetcode.com/problems/closest-binary-search-tree-value-ii/)
 - [LeetCode Solution](https://leetcode.com/problems/closest-binary-search-tree-value-ii/solution/)
@@ -206,7 +205,7 @@ root == null --> return res, i.e. return 5.
   Approach 2: quickselect, O(N)
     - quickselect: a typical algo to solve "find kth something"
 ```
-[1]
+[1] [Inorder + heap](./ClosestKNodes_Heap.java)
 ```
 Approach 1 O(N logk)
 - initialize the heap with "less close element first" strategy.
@@ -216,7 +215,7 @@ Approach 1 O(N logk)
 ```
 ![approach 2](./approach2.png)
 
-[2]
+[2] [convert to array + quick select](./ClosestKNodes_Quickselect.java)
 ```
 Approach 2 O(N), but O(N^2) is the worst case which is very rare and can be neglected.
 - convert the BST into an ascending array
