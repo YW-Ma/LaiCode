@@ -15,12 +15,13 @@ package com.oa.codesignal;
 // “This^^” 不valid, 因为i不在valid letter里面
 
 import java.util.HashSet;
+import java.util.Locale;
 
 // input: a = "Hello, my dear friend!", b = ['h', 'e', 'l', 'o', 'm']
 public class BrokenKeyboard {
     public int brokenKeyBoard(String str, char[] letters) {
         // preprocess str into word array
-        String[] array = str.split(" "); // 按照空格分开
+        String[] array = str.toLowerCase(Locale.ROOT).split(" "); // 按照空格分开
 
         // preprocess letters into HashSet
         boolean[] letterSet = new boolean[256];
@@ -31,7 +32,6 @@ public class BrokenKeyboard {
         // check each string one by one
         int counter = 0;
         for (String word : array) {
-            word = word.toLowerCase();
             boolean isValid = true;
             for (char ch : word.toCharArray()) {
                 if (Character.isLetter(ch) && !letterSet[ch]) {
