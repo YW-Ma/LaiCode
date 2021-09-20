@@ -7,6 +7,9 @@ public class FactorCombinations {
         // we need an order to avoid duplicated results.
         // all possible --> DFS
         List<List<Integer>> results = new ArrayList<>();
+        if (target <= 1) {
+            return results;
+        }
         List<Integer> cur = new ArrayList<>();
         helper(target, 2, cur, results);
         return results;
