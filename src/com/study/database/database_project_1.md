@@ -1,0 +1,40 @@
+##Logic:
+
+[category1] -- [category2] -- [product]
+[customer]
+
+### customer表
+```sql
+create table ofs_customers (
+    id int not null primary key, 
+    name char(64) not null, 
+    address text not null, 
+    postcode int not null);
+```
+
+### category表（先定义category）
+```sql
+Create table ofs_category1_meta(
+    id int not null primary key, 
+    displayname char(32) not  null);
+
+Create table ofs_category2_meta(
+    id int not null primary key, 
+    cate1id int not null, 
+    displayname char(32) not  null, 
+    constraint fk_cate1 foreign key (cate1id) 
+        references ofs_category1_meta(id)); 
+```
+
+### product表
+（有一个依赖category的分类，类似于一个tag，方便检索某类下的product）
+```sql
+create table ofs_products (
+    id int not null primary key, 
+    name char(128) not null, 
+    categoryid int not null, 
+    price numeric(8,2) not null, 
+    available int not null check (available >= 0), 
+    constraint fk_cate foreign key (categoryid) 
+        references ofs_category2_meta(id));
+```
