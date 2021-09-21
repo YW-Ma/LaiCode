@@ -14,6 +14,10 @@ public class RestoreIPAddress {
     // 123.222.234.225
     //             012
     //             ^ ^   2-0 = 2
+    
+    // 递归树： 一共有4层，每层添加1个、2个、3个数字。
+    // 答案方法：把for循环展开，添加1个、2个、3个数字的方法是拆开来的，这样可以避免一个特别复杂的getValidSegment
+    
     public static List<String> Restore(String ip) {
         List<String> results = new ArrayList<>();
         StringBuilder sb = new StringBuilder();
@@ -39,11 +43,9 @@ public class RestoreIPAddress {
         for (int i = startIdx; i <= startIdx + 2; i++) {
             String seg = getValidSegment(array, startIdx, i);
             if (seg != null) {
-                sb.append(seg);
-                sb.append('.');
+                sb.append(seg).append('.');
                 helper(pointsLeft - 1, i + 1, array, sb, results);
-                sb.deleteCharAt(sb.length() - 1);
-                sb.delete(sb.length() - (i + 1 - startIdx), sb.length()); //delete [start, end)
+                sb.delete(sb.length() - (i + 2 - startIdx), sb.length()); //delete [start, end)
             }
         }
     }
