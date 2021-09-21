@@ -4,6 +4,7 @@ import java.util.*;
 
 public class AllPermutationsOfSubsets {
     // https://app.laicode.io/app/problem/643?plan=3
+    // 主要是注意API的使用。
     public List<String> allPermutationsOfSubsets(String set) {
         List<String> results = new ArrayList<>();
         if (set == null) {
