@@ -27,15 +27,17 @@ public class MissingNumber {
     //    对于while会变的情况，要分left和right考虑，因为他们可能不同。
     
     
+    // 另外：为了保证O(logn)开销，而不是O(n)，不应该pre-processing.
+    //      而是可以提供一个函数，missing，每次遇到了才计算一次。
+    
     // 使用smallest larger的binary search
+    private int missing(int idx, int[] nums) {
+        return nums[idx] - nums[0] - idx;
+    }
+    
     public int missingElement1(int[] nums, int k) {
-        // pre-processing
-        int[] missing = new int[nums.length];
-        for (int i = 0; i < nums.length; i++) {
-            missing[i] = nums[i] - nums[0] - i; // 归0化，然后减去对应的第几个数字。 就可以知道跳跃了几个数字。
-        }
-        if (k > missing[missing.length - 1]) {
-            return k - missing[missing.length - 1] + nums[nums.length - 1];
+        if (k > missing(nums.length - 1, nums)) {
+            return k - missing(nums.length - 1, nums) + nums[nums.length - 1];
         }
         //
         // 0 2 3 5      k = 3
@@ -45,27 +47,22 @@ public class MissingNumber {
         
         // binary search - largest smaller
         int left = 0;
-        int right = missing.length - 1;
+        int right = nums.length - 1;
         while (left < right - 1) {
             int mid = left + (right - left) / 2;
-            if (missing[mid] < k) {
+            if (missing(mid, nums) < k) {
                 left = mid;
             } else {
                 right = mid; // right不可能是答案所以可以删掉，但是测试的时候会出错。不知道为啥。
             }
         }
-        return nums[left] + (k - missing[left]);
+        return nums[left] + (k - missing(left, nums));
     }
     
     // 使用largest smaller的binary search
     public int missingElement2(int[] nums, int k) {
-        // pre-processing
-        int[] missing = new int[nums.length];
-        for (int i = 0; i < nums.length; i++) {
-            missing[i] = nums[i] - nums[0] - i; // 归0化，然后减去对应的第几个数字。 就可以知道跳跃了几个数字。
-        }
-        if (k > missing[missing.length - 1]) {
-            return k - missing[missing.length - 1] + nums[nums.length - 1];
+        if (k > missing(nums.length - 1, nums)) {
+            return k - missing(nums.length - 1, nums) + nums[nums.length - 1];
         }
         
         // 0 2 3 5      k = 3
@@ -77,15 +74,15 @@ public class MissingNumber {
         
         // binary search
         int left = 0;
-        int right = missing.length - 1;
+        int right = nums.length - 1;
         while (left < right) {
             int mid = left + (right - left) / 2;
-            if (missing[mid] < k) {
+            if (missing(mid, nums) < k) {
                 left = mid + 1;  // 注意，当right = mid， left = mid + 1的时候。不需要修改循环条件为 -1， 因为此时不会出现那种死循环。
             } else {
                 right = mid; // right这边可能是ans，所以不动。 似乎在找 first larger.
             }
         }
-        return nums[right - 1] + (k - missing[right - 1]); //left == right了其实
+        return nums[right - 1] + (k - missing(right- 1, nums)); //left == right了其实
     }
 }
