@@ -38,6 +38,7 @@ public class BuildBSTAndGetSuccessor {
         // BST preorder successor: first find target T
         //       for normal tree:  1. T.left        2. T.right      3.go up, find an ancestor that has both left & right children, then get the right child  (or return null if arrive root)
         //       for BST:          same order as normal tree
+        return null;
     }
     
     public static void main(String[] args) {
