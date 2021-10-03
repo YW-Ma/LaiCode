@@ -1,6 +1,6 @@
 package com.oa.codesignal;
 
-import java.util.Arrays;
+import java.util.*;
 
 public class IsSubmatrixFull {
     public static boolean[] isSubmatrixFull_Ref(int[][] numbers) {
