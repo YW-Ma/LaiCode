@@ -17,7 +17,6 @@
 2. [ray from start to end (with reflect)]
 3. [fit with cell replacement]
 4. [beauty of a square matrix + sort and replace]
-5. 
 
 ## Code Signal 4
 1. [Event Emitter]
