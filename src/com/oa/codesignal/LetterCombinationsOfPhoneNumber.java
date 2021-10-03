@@ -73,7 +73,7 @@ public class LetterCombinationsOfPhoneNumber {
         String letters = panel.get(array[index]);
         for (char ch : letters.toCharArray()) {
             cur.append(ch);
-            helper(array, panel, index + 1, cur, res);
+            helper2(array, panel, index + 1, cur, res);
             cur.deleteCharAt(cur.length() - 1);
         }
     }
