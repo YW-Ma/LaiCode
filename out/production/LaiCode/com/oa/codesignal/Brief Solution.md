@@ -11,13 +11,12 @@
 5. [Split and Swap](./SplitAndSwap.java)【不需要in-place，直接开stringBuilder就行。 in-place的话就两两用"I love yahoo" trick即可】Given a string and a list of numbers, split the string according to the list and swap it. Return the swapped string.
 6. [Compute Product and Sum](./ComputeProductAndSum.java)  Compute product - sum of a number.
    For example, given 123456, product would be 1x2x3x4x56 = 720, sum would be 1+2+3+4+5+6 = 21, return product - sum
-7. 
+7. [题外练习 - reverse integer 并考虑overflow](./ReverseInteger.java) 【注意】 正负数都可以用 res = res * 10 + input%10 来反转。while写成 != 10就行了
 ## Code Signal 3
-1. [Sorting boundary elements of a matrix]
+1. [Sorting boundary elements of a matrix](./SortBoudnaryElements.java) M*N matrix -> sort its boundary elements and then output the new marix
 2. [ray from start to end (with reflect)]
 3. [fit with cell replacement]
 4. [beauty of a square matrix + sort and replace]
-5. 
 
 ## Code Signal 4
 1. [Event Emitter]
