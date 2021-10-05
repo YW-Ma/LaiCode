@@ -14,10 +14,10 @@
 7. [题外练习 - reverse integer 并考虑overflow](./ReverseInteger.java) 【注意】 正负数都可以用 res = res * 10 + input%10 来反转。while写成 != 10就行了
 ## Code Signal 3
 1. [Sorting boundary elements of a matrix](./SortBoudnaryElements.java) 先取出边界（不需要按顺序取），然后sort，然后按顺序放回去。 注意怎么表达Boundary数组和原来grid的位置的对应关系。
-2. [ray from start to end (with reflect)](./RayReflect.javas)
+2. [ray from start to end (with reflect)](./RayReflect.javas)  模拟光路的行为，试探走到边界i、j有一个会反向后重新试探。
 3. [fit with cell replacement]
-4. [beauty of a square matrix + sort and replace](./BeautyOfMatrix.java)
+4. [beauty of a square matrix + sort and replace](./BeautyOfMatrix.java) 
 
 ## Code Signal 4
 1. [Event Emitter]
-2. [create rectangles + check can fit or not]
+2. [create rectangles + check can fit or not](./TwoKindsOfOperations.java)
