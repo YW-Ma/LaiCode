@@ -13,6 +13,7 @@
    For example, given 123456, product would be 1x2x3x4x56 = 720, sum would be 1+2+3+4+5+6 = 21, return product - sum
 7. [题外练习 - reverse integer 并考虑overflow](./ReverseInteger.java) 【注意】 正负数都可以用 res = res * 10 + input%10 来反转。while写成 != 10就行了
 8. [rotate matrix for k times](./RotateImage.java)【由于rotate 4次归零，所以 k%4 才是要rotate的次数， 调用RotateImage k%4 次即可】
+9. [CountWaysOfSplitting](./WaysOfSplitting.java)Given a string S, Count number of ways of splitting S into 3 non-empty a,b,c such that a+b, b+c, c+a are all different.
 
 ## Code Signal 3
 1. [Sorting boundary elements of a matrix](./SortBoudnaryElements.java) 先取出边界（不需要按顺序取），然后sort，然后按顺序放回去。 注意怎么表达Boundary数组和原来grid的位置的对应关系。
