@@ -74,13 +74,12 @@ public class ReconstructItinerary {
             String tar = neighbors.get(i);
             route.add(tar);
             isVisitedArray[i] = true;
-            isVisited.put(root, isVisitedArray);
+            // isVisited.put(root, isVisitedArray); // 其实这里可以不用存回去, 修改isVisitedArray的时候，value就直接改了 (reference type)
             System.out.println(neighbors);
             if (helper(graph, isVisited, tar, route, validLength)) {
                 return true;
             }
             isVisitedArray[i] = false;
-            isVisited.put(root, isVisitedArray);
             route.remove(route.size() - 1);
         }
         return false;
