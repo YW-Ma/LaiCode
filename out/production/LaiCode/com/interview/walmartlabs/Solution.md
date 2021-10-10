@@ -1,7 +1,8 @@
 # Walmart Labs
 0.[对HashMap的实验](./HashMapExperiment.java)
     - 修改value，是否value会自动变化（reference的情况下）
-        - 尝试修改List 和 array
+        - 尝试修改作为value的 List 和 array中的元素，发现真的变了。根本不需要再put回去。
+    - 即直接getValue 然后修改就行了（如果是reference type的话）
 
 1. [332. Reconstruct Itinerary](https://leetcode.com/problems/reconstruct-itinerary/)
     - 拓扑偏序的准备阶段，有致命错误：
@@ -12,9 +13,22 @@
     - 实际上是一个遍历有向有环图、（注意是有环，不是acyclic) 如何避免走到死胡同产生无解问题： 不可以再使用while循环了，应该使用DFS。
           因为while循环删了node就从map里消失了。应该用DFS实现 trail-fail-and-fallback strategy.
     - 仔细看题并修改了问题后[正确版本](./ReconstructItinerary.java) 
+        - 时间复杂度：for each Vi, we have d choices (at most d possible destinations)
+        - then TC: O(branch ^ depth) = O(d ^ |E|)
+        - hard to know what d is.
+        - 主要是还会绕回来。。。所以并不是每个V只generate一次。
+    
+    - 更快的解决方案，实际上是在找eulerian path：(visits every edge exactly once)
+        - 1. starts with a random node, and then follows and arbitrary unvisited edge to a neighbor. until one returns to the starting node. (this yields a first circle in the graph)
+        - 2. if this circle covers all nodes, it's an Eulerian cycle. Otherwise, one choose another node among the cycles' nodes with unvisited edges and constructs another circle, called subtour.
+        - 具体来看：
+            - 从JFK触发，走unused edges，知道卡住发没有更多的unvisited外向边（outgoing edges）
+            - 退回到上一个neighbor，找unused edges，重复这个步骤直到所有的edges都被访问了。 
+            - 和DFS的差别：只有把当前node的所有neighbors都访问了，才能把自己加进去。 相当于是一种post-order的遍历。
+            - 之前写的DFS相当于是先序遍历。[新版本]()
 
 2. [124. Binary Tree Maximum Path Sum](https://leetcode.com/problems/binary-tree-maximum-path-sum/)
-
+- 注意三部曲 [Binary Tree Maximum Path Sum](./BinaryTreeMaximumPathSum.java)
 
 3. [138. Copy List with Random Pointer](https://leetcode.com/problems/copy-list-with-random-pointer/)
 
