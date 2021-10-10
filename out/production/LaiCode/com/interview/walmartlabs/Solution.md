@@ -4,10 +4,6 @@
     - 准备出度的时候，如果只看from，会漏掉出度为0的node
     - 准备入度的时候，如果只看to，会漏掉入度为0的node
     - 因为漏掉了，所以在while loop的时候，走到这里，发现map没有，会出现NPE。
-    - 这个和课表不一样，课表不会出现思路。 但是航班是会有死路的。 所以我[写了一个错误版本](./ReconstructItinerary_Wrong.java)
-- 实际上是一个遍历有向有环图、（注意是有环，不是acyclic) 如何避免走到死胡同产生无解问题： 不可以再使用while循环了，应该使用DFS。
-      因为while循环删了node就从map里消失了。应该用DFS实现 trail-fail-and-fallback strategy.
-- 仔细看题并修改了问题后[正确版本](./ReconstructItinerary.java) 
 
 2. [124. Binary Tree Maximum Path Sum](https://leetcode.com/problems/binary-tree-maximum-path-sum/)
 
