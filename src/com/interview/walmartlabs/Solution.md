@@ -61,7 +61,11 @@
 
 
 9. [658. Find K Closest Elements](https://leetcode.com/problems/find-k-closest-elements/)
-
+    - 用Binary Search：
+        - 方案1: O(logN + k) --> binary search find the closest point(while (left < right - 1) 因为left最多是=mid), then expand (谁小移谁 moving either left or right depending on which is closer to x)
+        - 方案2：O(log(N-k)) + subList的O(1) --> binary search the left border, mid 是 left border, mid + (k-1) 应该是right border。 现在就看right border 右侧的那个value是不是比left border 更近
+            - 即 在 0 - N-k 这个范围内，查找valid window border, left和right+1, 如果right+1比left更近，那说明window右移才行。否则window可以尝试左移。
+            - 即 left = mid + 1, right = mid 是两个条件。 因为left越过mid，所以while循环写 while (left < right) 就可以了
 10. Singleton class follow up 是 how to do lazy instantiation
 
 11. Merge K List
