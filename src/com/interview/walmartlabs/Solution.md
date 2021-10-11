@@ -69,7 +69,8 @@
             - 即 在 0 - N-k 这个范围内，查找valid window border, left和right+1, 如果right+1比left更近，那说明window右移才行。否则window可以尝试左移。
             - 即 left = mid + 1, right = mid 是两个条件。 因为left越过mid，所以while循环写 while (left < right) 就可以了
 10. Singleton class follow up 是 how to do lazy instantiation
-    - 123
+    - static single instance, private constructor, static getter,
+    - lazy initialization may encounter concurrent visit problem, using volatile + synchronized + double check to solve.
 
 11. Merge K List
     - 123
@@ -78,12 +79,32 @@
     - 123
 
 13. [545. Boundary of Binary Tree](https://leetcode.com/problems/boundary-of-binary-tree/)
-    - 123
-    - 
+    - 分成left\bottom\right三个部分
+    - left是不包括leaf的left-most
+    - bottom是leaf
+    - right是不包括leaf的right-most, 为了按顺序需要先存stack里面再弹出来。
+    
+    - 具体解法：
+        1. 准备一个ArrayList存储结果，然后把root加进去。 （跳过了corner cases）
+        2. 从t = root.left开始，while(t!=null) 如果t不是leaf就加入，优先更新t=t.left, left为空才走right。
+        3. 把所有的leaves加入（方法是pre-order visit, 加入isLeaf的）
+        4. 准备stack，从t = root.right出发按照2反过来走。 然后stack.pop加入list
+        5. 返回list。
+    
     
 14. [Word Search](https://leetcode.com/problems/word-search/)
-    - 123
-    - 
+    - 对每一个以开头字母开头的位置，进行DFS。
+    - 通过把走过的路变成#来避免重复走到一个地方。（这样下次走过来会发现 char != word.charAt(xx)
+    - return前把#变回对应的字母。
+    - DFS(int row, int col, String word, int index) + 作为field的ROWS和COLS边界
+        - 标记root的起始位置，word，以及当前需要比较第几个
+        - base case：index >= word.length()   return true.
+        - check: row, col越界，word.charAt(index)和对应位置不匹配   return false.
+        - 然后把自己标记为#
+        - DFS: 准备好 上下左右四个方向的走法。for循环尝试四个走法对应的row、col并且index+1
+            - 如果找到了一个true的，那么就break。
+        - 返回前把自己标记为 word.charAt(index)
+        - 返回return value（看有没有找到过true了）
     
 15. [Palindrome](https://leetcode.com/problems/palindrome-number/)
     - [code](./Palindrome.java)   其实和reverse number很像。 只是这里只reverse一半。 而且考察了怎么停止、停止后怎么比较
