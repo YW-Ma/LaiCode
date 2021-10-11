@@ -14,6 +14,6 @@ public class CopyListWithRandomPointer {
     }
     // 这个LinkedList有一个额外的random指针，指向某个未来的位置。
     public Node copyRandomList(Node head) {
-
+        return null;
     }
 }
