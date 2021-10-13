@@ -29,11 +29,12 @@
         - 只有自己的destList已经为空的时候，才会走到这里。 这意味着所有的路径都被探索过了，即自己之后的itinerary已经构造完毕了。所以可以安心加入自己。
 
 2. [124. Binary Tree Maximum Path Sum](https://leetcode.com/problems/binary-tree-maximum-path-sum/)
-- 注意三部曲 [Binary Tree Maximum Path Sum](./BinaryTreeMaximumPathSum.java)
+    - 注意三部曲 [Binary Tree Maximum Path Sum](./BinaryTreeMaximumPathSum.java)
 
 3. [138. Copy List with Random Pointer](https://leetcode.com/problems/copy-list-with-random-pointer/)
-    - 方案1：dictionary, O(n) space
-    - 方案2：每个node先复制一份在自己后面，然后根据原数组链接，构造新数组链接。 最后把两个拆开来。 O(1) extra space.
+    - 方案1：dictionary, [O(n) space](./CopyListWithRandomPointer.java)
+        - HashMap + getCloned(Node node) 可以返回原数组node对应的cloned node。 注意head也要手动加进去。
+    - 方案2：每个node先复制一份在自己后面，然后根据原数组链接，构造新数组链接。 最后把两个拆开来。 [O(1) extra space]()
 
 4. [41. First Missing Positive](https://leetcode.com/problems/first-missing-positive/)
     - Given an unsorted integer array nums, return the smallest missing positive integer.
@@ -44,11 +45,12 @@
     - hint：所有的negative和0，都可以被1替换掉（如果1不在就直接返回1完事）
         - O(n)方案 hashMap存储所有的值，然后从1开始往size loop，如果遇到n找不到，那么n就是第一个missing的。 也可以用一个size大小的数组来实现
         - O(1)方案 其实是投机取巧，把方案1的那个size数组套用到原数组上，由于一开始把小于1的都替换成1了，所以”如果是negative“就代表hash的存在。 赋予sign一个意义。
+    - [code]()
 5. [460. LFU Cache](https://leetcode-cn.com/problems/lfu-cache/solution/lfuhuan-cun-by-leetcode-solution/)
-    放OA结束做
+    
 
 6. [146. LRU Cache](https://leetcode-cn.com/problems/lru-cache/solution/)
-    放OA结束做
+    
    
 7. []()面試官是一位別組的三哥，人巨好，先問了一道算法題，題目LC上沒找到大意是這樣：
 給你一個 array 例如 [1,3,5,6,4,2] 然後給你一個正整數K, 例如K = 3，
@@ -68,7 +70,83 @@
             - 即 在 0 - N-k 这个范围内，查找valid window border, left和right+1, 如果right+1比left更近，那说明window右移才行。否则window可以尝试左移。
             - 即 left = mid + 1, right = mid 是两个条件。 因为left越过mid，所以while循环写 while (left < right) 就可以了
 10. Singleton class follow up 是 how to do lazy instantiation
+    - static single instance, private constructor, static getter,
+    - lazy initialization may encounter concurrent visit problem, using volatile + synchronized + double check to solve.
 
 11. Merge K List
+    - 123
 
 12. hashmap的implemen‍‍‌‌‌‌‍‌‍‍‌‌‌‌‌‍‌‌‌tation
+    - 123
+
+13. [545. Boundary of Binary Tree](https://leetcode.com/problems/boundary-of-binary-tree/)
+    - 分成left\bottom\right三个部分
+    - left是不包括leaf的left-most
+    - bottom是leaf
+    - right是不包括leaf的right-most, 为了按顺序需要先存stack里面再弹出来。
+    
+    - 具体解法：
+        1. 准备一个ArrayList存储结果，然后把root加进去。 （跳过了corner cases）
+        2. 从t = root.left开始，while(t!=null) 如果t不是leaf就加入，优先更新t=t.left, left为空才走right。
+        3. 把所有的leaves加入（方法是pre-order visit, 加入isLeaf的）
+        4. 准备stack，从t = root.right出发按照2反过来走。 然后stack.pop加入list
+        5. 返回list。
+    
+    
+14. [Word Search](https://leetcode.com/problems/word-search/)
+    - 对每一个以开头字母开头的位置，进行DFS。
+    - 通过把走过的路变成#来避免重复走到一个地方。（这样下次走过来会发现 char != word.charAt(xx)
+    - return前把#变回对应的字母。
+    - DFS(int row, int col, String word, int index) + 作为field的ROWS和COLS边界
+        - 标记root的起始位置，word，以及当前需要比较第几个
+        - base case：index >= word.length()   return true.
+        - check: row, col越界，word.charAt(index)和对应位置不匹配   return false.
+        - 然后把自己标记为#
+        - DFS: 准备好 上下左右四个方向的走法。for循环尝试四个走法对应的row、col并且index+1
+            - 如果找到了一个true的，那么就break。
+        - 返回前把自己标记为 word.charAt(index)
+        - 返回return value（看有没有找到过true了）
+    
+15. [Palindrome](https://leetcode.com/problems/palindrome-number/)
+    - [code](./Palindrome.java)   其实和reverse number很像。 只是这里只reverse一半。 而且考察了怎么停止、停止后怎么比较
+    - hint: -121这种负值，reverse以后是 121-， 不被认为是palindrome。个位是0的也不被认为是palindrome。 另外reverse可能会出现溢出，所以最好只reverse一半。
+        - 实际上是把后一边reverse，一边拆下来了。
+    - 终止条件：很难判断什么叫“一半” 所以就直接直接“原来数字剩下的部分只要还大于新的一半”
+    - 奇偶数问题：  121 会根据停止条件变成 1 + 12，   1221根据停止条件是 12 + 12，   所以如果原数组 == 新 || 新 / 10  都会被认为是palindrome
+    - 也看一下[valid palindrome](https://leetcode.com/problems/valid-palindrome/)
+    
+16. 2 并发问题解决方案？
+    比如：亚马逊某商品有2个库存，有10个人同时下单，如何处理？
+
+    3 Cookie和Sessi‍‍‌‌‌‌‍‌‍‍‌‌‌‌‌‍‌‌‌on的区别？
+
+    4 LocalStorage和Cookie的区别？
+
+    5 AJAX工作原理，服务端、浏览器的双向通讯机制？
+
+17. 题目：给一串字符like“wwbbbbwww”  --> white & black pieces
+wendy和bob轮流拿走w或者b，仅当这个字母有相邻的相同字母时
+如果轮到w的时候，没有w可以拿了，那bob就赢了
+输出赢的人名
+
+wwbbbbwww
+   ^
+wwbbbwww
+      ^
+wwbbbww
+   ^
+wwbbww
+wendy cannot remove any piece, so Bob wins
+
+就for循环找吧。
+
+18. 字符串替换
+“a” => “a”
+“ab” => “abb”
+“cb” => “cccbb”
+"ccb" =>“ccccccbb”
+```java
+public String replaceAll(String regex, String replacement);
+str.replaceAll("cb", "cccb")
+```
+
