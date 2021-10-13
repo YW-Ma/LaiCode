@@ -57,7 +57,8 @@
 排序後每個相鄰的樹枝間都相差1
 
 
-8. 给定有序数组，target和k，要求找出最接近target的k个数按差值排序。如果差相同小的在前。[1,4,5,7,9], target = 8, k = 3 [7,9,5]   说了可以binary search 可以heap，没说two pointer也没问。
+8. 给定有序数组，target和k，要求找出最接近target的k个数按差值排序。如果差相同小的在前。[1,4,5,7,9], target = 8, k = 3 [7,9,5]   说了可以binary search 可以heap
+   应该就是这个题。 需要知道怎么按差值排序。
 
 
 9. [658. Find K Closest Elements](https://leetcode.com/problems/find-k-closest-elements/)

@@ -20,6 +20,8 @@
 2. [ray from start to end (with reflect)](./RayReflect.javas)  模拟光路的行为，试探走到边界i、j有一个会反向后重新试探。
 3. [fit with cell replacement]
 4. [beauty of a square matrix + sort and replace](./BeautyOfMatrix.java)
+   - beauty definition: smallest missing positive number.
+   - 我的思路：TreeMap可以按照key自动排序，所以用beautiful number作为key，value存储一个submatrix即可。 全捞出来以后，按照beautiful number重构。
 
 ## Code Signal 4
 1. [Event Emitter]
