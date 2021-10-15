@@ -26,4 +26,18 @@ public class CoinChangeII {
             dfs(res, amount - i, idx + 1, coins);
         }
     }
+    
+    public int changeDP(int amount, int[] coins) {
+        int[] dp = new int[amount + 1];
+        // base rule: dp[0] = 1;
+        // induction rule: dp[x] = dp[x] + dp[x - coinValue]
+        dp[0] = 1;
+        for (int coin : coins) {
+            for (int i = coin; i <= amount; i++) {
+                dp[i] += dp[i - coin];
+            }
+        }
+        
+        return dp[amount];
+    }
 }
