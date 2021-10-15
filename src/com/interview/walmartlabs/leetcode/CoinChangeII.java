@@ -26,6 +26,8 @@ public class CoinChangeII {
             dfs(res, amount - i, idx + 1, coins);
         }
     }
+    // Time: O(coins ^ amount)
+    
     
     public int changeDP(int amount, int[] coins) {
         int[] dp = new int[amount + 1];
@@ -40,4 +42,5 @@ public class CoinChangeII {
         
         return dp[amount];
     }
+    // Time: O(amount * coins)
 }
