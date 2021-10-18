@@ -5,9 +5,7 @@ public class PaintHouse {
         // n houses, thre colors, costs is nx3
         int[] dp = new int[3];
         // base rule:
-        for (int i = 0; i < 3; i++) {
-            dp[i] = costs[0][i];
-        }
+        System.arraycopy(costs[0], 0, dp, 0, 3); // manual array copy可以被代替
         
         // induction rule:
         for (int i = 1; i < costs.length; i++) {

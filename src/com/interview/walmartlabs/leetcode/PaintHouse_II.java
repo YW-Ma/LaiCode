@@ -10,9 +10,7 @@ public class PaintHouse_II {
         int[] curCost = new int[k];
         
         // base rule:
-        for (int i = 0; i < k; i++) {
-            prevCost[i] = costs[0][i];
-        }
+        System.arraycopy(prevCost, 0, costs[0], 0, k);
         
         // induction rule:
         for (int i = 1; i < n; i++) {
@@ -32,9 +30,7 @@ public class PaintHouse_II {
             }
             
             // write back:
-            for (int j = 0; j < k; j++) {
-                prevCost[j] = curCost[j];
-            }
+            System.arraycopy(curCost, 0, prevCost, 0, k);
         }
         
         // return the smallest one
