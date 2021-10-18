@@ -10,7 +10,7 @@ public class PaintHouse_II {
         int[] curCost = new int[k];
         
         // base rule:
-        System.arraycopy(prevCost, 0, costs[0], 0, k);
+        System.arraycopy(costs[0], 0, prevCost, 0, k); // source --> target
         
         // induction rule:
         for (int i = 1; i < n; i++) {
