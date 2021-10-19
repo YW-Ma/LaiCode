@@ -81,7 +81,7 @@ public class LFUCache {
     
     public void deleteFreqMapNode(Node node) {
         freqMap.get(node.freq).deleteNode(node);
-        if (freqMap.get(node.freq).isEmpty()) {
+        if (freqMap.get(node.freq).isEmpty()) { // empty list就删掉
             freqMap.remove(node.freq);
         }
     }
