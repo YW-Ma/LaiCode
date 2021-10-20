@@ -32,11 +32,9 @@ public class SortedArrayReconstructBST_Inorder {
         // left
         TreeNode left = constructBST(l, mid - 1);
         // self
-        
         TreeNode root = new TreeNode(head.val);
         head = head.next;
         root.left = left;
-        
         // right
         root.right = constructBST(mid + 1, r);
         return root;
