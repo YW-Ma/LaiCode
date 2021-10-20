@@ -3,7 +3,7 @@ package com.interview.walmartlabs.leetcode;
 import com.study.util.ListNode;
 import com.study.util.TreeNode;
 
-public class SortedArrayReconstructBST {
+public class SortedArrayReconstructBST_Inorder {
     // 1. DFS简单思想：可以每次找到middle，然后建立起来。 middle的左孩子、右孩子都是返回值。相当于是post order入手
     //                O(nlogn) 因为一共有logn层，每层开销n。
     // 2. DFS优化：实际上可以从inorder入手构建（画图），然后构建的时候肯定从head开始（画图）
