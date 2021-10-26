@@ -4,7 +4,7 @@ public class CoinChange {
     //    https://leetcode.com/problems/coin-change/solution/
     // DP: 注意事项是可能在中间遇到无法找零的情况，比如 只给2这个coin，但是让凑3
     //  DP 数组init是：[0, _, _, _]
-    //              ：[0, -1, _, _]    1-2 越界了
+    //              ：[0, -1, _, _]    1-2 越界了    （无法抵达的地方标记为-1，未来无法从这里继承）（0的话是可以继承的）
     //              ：[0, -1, 1, _]    2-2 = 0 继承0加一
     //              ：[0, -1, 1, -1]   3-2 没有越界，但是指向一个-1，即一个无法凑到的数字，所以不变。 最后会赋值-1
     //     返回 dp[amount] 即-1
@@ -33,7 +33,7 @@ public class CoinChange {
                 }
             }
             // 下面这个if else 可以用三元表达式替换：
-            dp[i] = (fewer == Integer.MAX_VALUE) ? -1 : fewer + 1;
+            dp[i] = (fewer == Integer.MAX_VALUE) ? -1 : fewer + 1; // 如果无法抵达，要标记为-1
 //            if (fewer == Integer.MAX_VALUE) { // no valid predecessor
 //                dp[i] = -1;
 //            } else { // has valid predecessor
