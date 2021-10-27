@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class MyHashMapSafe<K, V> {
   // nested class
-  public class Entry<K, V> {
+  private class Entry<K, V> {
     // use separate chain to handle hash collision
     final K key;
     V value;

@@ -22,7 +22,7 @@ public class MyHashMap { // 先不写generics
 
 
   // 1. Entry nested class
-  public static class Entry {
+  private static class Entry {
     final String key;
     Integer value;
     Entry next;
