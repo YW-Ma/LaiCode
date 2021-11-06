@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class TreeNode {
   public int key;
+  public int val;
   public TreeNode left;
   public TreeNode right;
 
