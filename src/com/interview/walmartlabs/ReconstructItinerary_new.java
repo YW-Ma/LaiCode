@@ -18,7 +18,7 @@ public class ReconstructItinerary_new {
     static class Solution {
         // origin -> list of destinations
         HashMap<String, LinkedList<String>> flightMap = new HashMap<>();
-        LinkedList<String> result = null;
+        List<String> terminals = null;
 
         public List<String> findItinerary(List<List<String>> tickets) {
             // Step 1). build the graph first
@@ -29,7 +29,7 @@ public class ReconstructItinerary_new {
                     LinkedList<String> destList = this.flightMap.get(origin);
                     destList.add(dest);
                 } else {
-                    LinkedList<String> destList = new LinkedList<String>();
+                    LinkedList<String> destList = new LinkedList<>();
                     destList.add(dest);
                     this.flightMap.put(origin, destList);
                 }
@@ -38,10 +38,11 @@ public class ReconstructItinerary_new {
             // Step 2). order the destinations
             this.flightMap.forEach((key, value) -> Collections.sort(value)); // lambda函数拿到了value的reference，然后对各个value内部进行了排序。不需要put回去。
 
-            this.result = new LinkedList<String>();
+            this.terminals = new ArrayList<String>();
             // Step 3). post-order DFS
             this.DFS("JFK");
-            return this.result;
+            Collections.reverse(this.terminals);
+            return this.terminals;
         }
 
         protected void DFS(String origin) {
@@ -55,8 +56,8 @@ public class ReconstructItinerary_new {
                 }
             }
             // add the airport to the head of the itinerary
-            this.result.offerFirst(origin);
-            // 只有自己的destList已经为空的时候，才会走到这里。 这意味着所有的路径都被探索过了，即自己之后的itinerary已经构造完毕了。所以可以安心加入自己。 （JFK第一个加入的时机是从CCC绕上来的时候，发现JFK的AAA和BBB已经被pollFirst了所以empty， 随后回到最开始点的时候，还会再加入一次。）
+            this.terminals.add(origin);
+            // 只有自己的destList已经为空的时候，才会走到这里。这意味着自己是当前视角下的重点。
         }
     }
 }
