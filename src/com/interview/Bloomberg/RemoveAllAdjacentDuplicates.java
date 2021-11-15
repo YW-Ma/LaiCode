@@ -34,7 +34,6 @@ public class RemoveAllAdjacentDuplicates {
     //          每次把reader的字符复制到writer。
     //          如果 writer发现：新字符（则stack压1），和上一个一样（stack顶+1）
     //          当栈顶在操作后是k，则弹栈，writer也后减去k以后退。（相当于删掉了元素）
-    
     // 实现了一下stack方法
     public String removeDuplicates(String s, int k) {
         char[] sa = s.toCharArray();
