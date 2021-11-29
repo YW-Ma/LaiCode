@@ -2,10 +2,12 @@ package com.interview.Google;
 
 import com.study.util.TreeNode;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FindLeavesOfBinaryTree {
     List<List<Integer>> res;
+
     public List<List<Integer>> findLeaves(TreeNode root) {
         // list of leaf nodes
         res = new ArrayList<>();

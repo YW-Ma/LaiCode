@@ -1,6 +1,7 @@
 package com.interview.Google;
 
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.HashSet;
 import java.util.Queue;
 import java.util.Set;
 
@@ -23,6 +24,7 @@ public class LoggerRateLimiter {
         System.out.println(logger.shouldPrintMessage(11, "c"));
     }
 }
+
 class Pair<K, V> {
     public K msg;
     public V time;
@@ -34,8 +36,8 @@ class Pair<K, V> {
 }
 
 class Logger {
-    private Queue<Pair<String, Integer>> queue;
-    private Set<String> set;
+    private final Queue<Pair<String, Integer>> queue;
+    private final Set<String> set;
     // plain queue doesn't support the "contains" operation, so we also need a set to track the content of queue
 
     public Logger() {
