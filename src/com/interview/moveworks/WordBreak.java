@@ -41,7 +41,7 @@ public class WordBreak {
 
 // DP induction rule:
 // for first i letters.
-        for (int i = 1; i < s.length(); i++) {
+        for (int i = 1; i <= s.length(); i++) {
             // try to “cut” the last j letters down
 // leetcode, i=8, j=4, left:leet, right:code
 // 01234567
