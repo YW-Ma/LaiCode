@@ -1,6 +1,7 @@
 package com.jiuzhang.双指针与隔板;
 
 public class PickApples {
+    // https://www.lintcode.com/problem/1850/
     public static void main(String[] args) {
         int[] A = new int[]{4,5,4,5,6,4,7,10,9,1};
         int k = 1;
