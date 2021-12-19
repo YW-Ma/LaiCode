@@ -45,6 +45,7 @@ public class MaximumNumberOfPointsWithCost {
             
             for (int i = 0; i < cols; i++) {
                 long max = 0;
+                //             之前这组确实有重复，比如 第1个 和 第len-1个，的内层for k循环其实是一样的
                 for (int k = 0; k < cols; k++) {
                     max = Math.max(max, prev[k] - Math.abs(i - k));
                 }
