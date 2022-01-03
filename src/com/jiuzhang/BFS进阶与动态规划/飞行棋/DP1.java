@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class DP1 {
-    // from left to right
+    // from left to right filling the dp
     // DP[i] stands for "the least steps to jump to current position"
     // DP[i] = min{ min(prev 6 status) + 1 , connection"from" + 0 }
 
