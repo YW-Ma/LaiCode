@@ -13,7 +13,7 @@ public class DicesSum {
 
         // induction rule:
         for (int i = 2; i <= n; i++) { // 枚举骰子的个数
-            for (int j = 1; j <= 6 * n; j++) { // 枚举当前的sum值
+            for (int j = 1; j <= 6 * i; j++) { // 枚举当前的sum值
                 for (int k = 1; k <= 6; k++) { // 枚举当前骰子的点数
                     if (j < k) { // 试图寻找上一个状态，如果sum值低于点数，说明没有合适的上一个状态
                         continue;
