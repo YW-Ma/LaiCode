@@ -1,4 +1,4 @@
-package com.jiuzhang.概率型动态规划;
+package com.jiuzhang.概率型动态规划.投掷骰子;
 
 import java.util.*;
 
