@@ -5,11 +5,10 @@ import java.util.HashMap;
 public class LFUCache {
     // 需要一个 key -> node 的映射
     // 需要一个 freq -> node list head 的映射
-    
-    HashMap<Integer, Node> keyMap;
-    HashMap<Integer, NodeList> freqMap;
-    int capacity;
-    int minFreq;
+    HashMap<Integer, Node> keyMap;        // Insert or Update node when [#put]. Remove node when exceed capacity.
+    HashMap<Integer, NodeList> freqMap;   // When frequency changed, modify via [#addFreqMapNode] and [#deleteFreqMapNode]; When exceed capacity, find where to delete by `freqMap.get(minFreq)`
+    int capacity; 
+    int minFreq;   // Set to 1 if put a new key (with freq 1); Bump up 1 when revisited (either put or get)
     
     public LFUCache(int capacity) {
         this.keyMap = new HashMap<>();
@@ -28,7 +27,7 @@ public class LFUCache {
         // put the updated node to new location
         deleteFreqMapNode(node);
         node.freq++;
-        addFreqMap(node);
+        addFreqMapNode(node);
         if (!freqMap.containsKey(minFreq)) {
             minFreq++;
         }
@@ -53,7 +52,7 @@ public class LFUCache {
             }
             Node node = new Node(key, val, 1);
             keyMap.put(key, node);
-            addFreqMap(node);
+            addFreqMapNode(node);
             minFreq = 1;
         }
         // if exist
@@ -63,14 +62,14 @@ public class LFUCache {
             // update
             deleteFreqMapNode(node);
             node.freq++;
-            addFreqMap(node);
+            addFreqMapNode(node);
             if (!freqMap.containsKey(minFreq)) {
                 minFreq++;
             }
         }
     }
     
-    public void addFreqMap(Node node) {
+    public void addFreqMapNode(Node node) {
         if (freqMap.containsKey(node.freq)) { // 包含freq，就插入
             freqMap.get(node.freq).insertFirst(node);
         } else {
