@@ -44,6 +44,7 @@ public class LFUCache {
             if (capacity == 0) {
                 return;
             }
+            // LFU 与 LRU的核心区别是淘汰策略(即下方的if block)不同. 为此需要维护 minFreq 和 freqMap.
             if (keyMap.size() == capacity) { // delete LFU node
                 NodeList list = freqMap.get(minFreq);
                 Node node = list.getLastNode();
